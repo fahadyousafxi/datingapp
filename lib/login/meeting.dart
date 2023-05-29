@@ -1,4 +1,5 @@
 import 'package:dating/login/accounts/account.dart';
+import 'package:dating/login/signIn.dart';
 import 'package:dating/login/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -64,21 +65,81 @@ class _MeetingState extends State<Meeting> {
                   color: notifire.getdarkscolor,
                   fontSize: height / 35),
             ),
-            SizedBox(height: height / 18,),
+            SizedBox(
+              height: height / 18,
+            ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Account(),),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignIn(),
+                  ),
+                );
               },
               child: Container(
                 height: height / 17,
                 width: width / 1.3,
                 decoration: BoxDecoration(
                   color: notifire.getpinkscolor,
-                  borderRadius: const BorderRadius.all(Radius.circular(20),),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: width / 90,),
+                    SizedBox(
+                      width: width / 90,
+                    ),
+                    Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                        height: height / 17,
+                        width: width / 10,
+                        child: Icon(Icons.login_outlined)),
+                    SizedBox(
+                      width: width / 8,
+                    ),
+                    Text(
+                      '       Login',
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontFamily: 'Gilroy Bold',
+                          color: Colors.white,
+                          fontSize: height / 48),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: height / 40,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Account(),
+                  ),
+                );
+              },
+              child: Container(
+                height: height / 17,
+                width: width / 1.3,
+                decoration: BoxDecoration(
+                  color: notifire.getpinkscolor,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: width / 90,
+                    ),
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
@@ -86,9 +147,14 @@ class _MeetingState extends State<Meeting> {
                       ),
                       height: height / 17,
                       width: width / 10,
-                      child: Image.asset("image/call.png",color: notifire.getpinkscolor,),
+                      child: Image.asset(
+                        "image/call.png",
+                        color: notifire.getpinkscolor,
+                      ),
                     ),
-                    SizedBox(width: width / 8,),
+                    SizedBox(
+                      width: width / 8,
+                    ),
                     Text(
                       CustomStrings.login,
                       textAlign: TextAlign.start,
@@ -101,21 +167,32 @@ class _MeetingState extends State<Meeting> {
                 ),
               ),
             ),
-            SizedBox(height: height / 40,),
+            SizedBox(
+              height: height / 40,
+            ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Account(),),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Account(),
+                  ),
+                );
               },
               child: Container(
                 height: height / 17,
                 width: width / 1.3,
                 decoration: BoxDecoration(
                   color: notifire.getpinkscolor.withOpacity(0.4),
-                  borderRadius: const BorderRadius.all(Radius.circular(20),),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: width / 90,),
+                    SizedBox(
+                      width: width / 90,
+                    ),
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
@@ -125,10 +202,14 @@ class _MeetingState extends State<Meeting> {
                       width: width / 10,
                       child: Padding(
                         padding: EdgeInsets.all(height / 100),
-                        child: Image.asset("image/google.png",),
+                        child: Image.asset(
+                          "image/google.png",
+                        ),
                       ),
                     ),
-                    SizedBox(width: width / 8,),
+                    SizedBox(
+                      width: width / 8,
+                    ),
                     Text(
                       CustomStrings.loging,
                       textAlign: TextAlign.start,
@@ -141,7 +222,9 @@ class _MeetingState extends State<Meeting> {
                 ),
               ),
             ),
-            SizedBox(height : height / 30,),
+            SizedBox(
+              height: height / 30,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -153,12 +236,17 @@ class _MeetingState extends State<Meeting> {
                       color: notifire.getgreycolor,
                       fontSize: height / 50),
                 ),
-                SizedBox(width: width / 100,),
+                SizedBox(
+                  width: width / 100,
+                ),
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context){
-                      return const SignUp();
-                    }),);
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) {
+                        return const SignUp();
+                      }),
+                    );
                   },
                   child: Container(
                     color: Colors.transparent,

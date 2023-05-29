@@ -1,9 +1,8 @@
 class CustomStrings {
-
   static const String algorithm = 'Happiness';
   static const String signin = 'Sign In';
   static const String signup = 'Sign Up';
-  static const String meeting = "Let's meeting new" ;
+  static const String meeting = "Let's meeting new";
   static const String around = 'people around you';
   static const String matches = 'Matches';
   static const String next = 'Next';
@@ -23,7 +22,8 @@ class CustomStrings {
   static const String alfredo = 'Alfredo Calzoni';
   static const String iknow = 'What about that new jacket';
   static const String viewall = 'View All';
-  static const String subscription = 'After the 7-day free trial, your subscription will auto-renew for \$39.99 every 2 months.';
+  static const String subscription =
+      'After the 7-day free trial, your subscription will auto-renew for \$39.99 every 2 months.';
   static const String discoverby = 'Discover by Interest';
   static const String newmatches = 'New Matches';
   static const String allmatches = 'All Matches';
@@ -151,7 +151,8 @@ class CustomStrings {
   static const String filters = 'Filters';
   static const String juilet = 'Juilet & Romeo';
   static const String martin = 'Martin Solveig';
-  static const String eating = 'I love eating healthy and working out. You can most likely find me at the gym! ';
+  static const String eating =
+      'I love eating healthy and working out. You can most likely find me at the gym! ';
   static const String about = 'About';
   static const String location = 'Location';
   static const String gamer = 'Gamer';
@@ -161,10 +162,14 @@ class CustomStrings {
   static const String jamyee = 'Jamyee, 19';
   static const String active = 'ACTIVE 5M AGO';
   static const String email = 'EMAIL';
-  static const String chat1 = 'Hi Travis, I’m sorry for not returning your call ! Work has been crazy, how have you been?';
-  static const String chat2 = 'Hi Catie! I’ve been good actually. Thanks for asking! How is college going for ya?';
-  static const String chat3 = 'It’s been going really good. Made some new friends. I’m coming home Friday for a bit!';
-  static const String chat4 = 'That’s awesome! Want to grab a few drinks this weekend?';
+  static const String chat1 =
+      'Hi Travis, I’m sorry for not returning your call ! Work has been crazy, how have you been?';
+  static const String chat2 =
+      'Hi Catie! I’ve been good actually. Thanks for asking! How is college going for ya?';
+  static const String chat3 =
+      'It’s been going really good. Made some new friends. I’m coming home Friday for a bit!';
+  static const String chat4 =
+      'That’s awesome! Want to grab a few drinks this weekend?';
   static const String chat5 = 'That sounds great, I’d love to!';
   static const String matched = 'YOU MATCHED WITH CATIE ON 7/6/19';
   static const String emails = 'email';
@@ -177,6 +182,7 @@ class CustomStrings {
   static const String loging = 'Login with Google';
   static const String premium = 'Premium';
   static const String today = 'Sign up today for free!';
+  static const String todaySignIn = 'Sign In Here';
   static const String welcome = 'Welcome';
   static const String havean = "Don't have an account?";
   static const String account = 'Already have an account?';
@@ -187,6 +193,4 @@ class CustomStrings {
   static const String onbonding4 = 'large array of similar interests.';
   static const String onbonding5 = 'Sign up today and enjoy the first month';
   static const String onbonding6 = 'of premium benefits on us.';
-
-
 }
