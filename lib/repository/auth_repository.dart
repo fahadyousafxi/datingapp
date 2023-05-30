@@ -7,14 +7,14 @@ import '../data/network/networkApiServices.dart';
 class AuthRepository {
   final BaseApiServices _apiServices = NetworkApiServices();
 
-  /// Login Api Call
+  /// SignIn Api Call
   Future<dynamic> loginApi(dynamic data) async {
     try {
       dynamic response =
-          await _apiServices.getPostApiResponse(AppUrl.verifyOTPEndPoint, data);
+          await _apiServices.getPostApiResponse(AppUrl.signInEndPoint, data);
       if (kDebugMode) {
         print(
-            '*************************** ${AppUrl.verifyOTPEndPoint} ************************');
+            '*************************** ${AppUrl.signInEndPoint} ************************');
       }
       return response;
     } catch (e) {
@@ -22,14 +22,14 @@ class AuthRepository {
     }
   }
 
-  /// Register Api Call
+  /// SignUp Api Call
   Future<dynamic> registerApi(dynamic data) async {
     try {
       dynamic response =
-          await _apiServices.getPostApiResponse(AppUrl.verifyOTPEndPoint, data);
+          await _apiServices.getPostApiResponse(AppUrl.signUpEndPoint, data);
       if (kDebugMode) {
         print(
-            '*************************** ${AppUrl.verifyOTPEndPoint} ************************');
+            '*************************** ${AppUrl.signUpEndPoint} ************************');
       }
       return response;
     } catch (e) {
@@ -37,14 +37,14 @@ class AuthRepository {
     }
   }
 
-  /// Forget Api Call
-  Future<dynamic> forgetApi(dynamic data) async {
+  /// Send OTP Api Call
+  Future<dynamic> sendOTPApi(dynamic data) async {
     try {
       dynamic response =
-          await _apiServices.getPostApiResponse(AppUrl.verifyOTPEndPoint, data);
+          await _apiServices.getPostApiResponse(AppUrl.sendOTPEndPoint, data);
       if (kDebugMode) {
         print(
-            '*************************** ${AppUrl.verifyOTPEndPoint} ************************');
+            '*************************** ${AppUrl.sendOTPEndPoint} ************************');
       }
 
       return response;
@@ -54,23 +54,7 @@ class AuthRepository {
   }
 
   /// update password Api Call
-  Future<dynamic> forgetUsingPhoneApi(dynamic data) async {
-    try {
-      dynamic response =
-          await _apiServices.getPostApiResponse(AppUrl.verifyOTPEndPoint, data);
-      if (kDebugMode) {
-        print(
-            '*************************** ${AppUrl.verifyOTPEndPoint} ************************');
-      }
-
-      return response;
-    } catch (e) {
-      throw e;
-    }
-  }
-
-  /// update password Api Call
-  Future<dynamic> updatePasswordApi(dynamic data) async {
+  Future<dynamic> verifyOTPApi(dynamic data) async {
     try {
       dynamic response =
           await _apiServices.getPostApiResponse(AppUrl.verifyOTPEndPoint, data);

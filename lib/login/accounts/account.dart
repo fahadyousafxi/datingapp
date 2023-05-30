@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
 import '../../utils/string.dart';
@@ -13,7 +14,22 @@ import 'interests.dart';
 import 'upload.dart';
 
 class Account extends StatefulWidget {
-  const Account({Key? key}) : super(key: key);
+  final String? name;
+  final String? email;
+  final String? birthDate;
+  final String? password;
+  final int? initialPage;
+  final String? id;
+
+  const Account(
+      {required this.name,
+      this.id,
+      required this.email,
+      required this.birthDate,
+      required this.password,
+      required this.initialPage,
+      Key? key})
+      : super(key: key);
 
   @override
   State<Account> createState() => _AccountState();
@@ -23,7 +39,8 @@ class _AccountState extends State<Account> {
   final int _numPages = 5;
 
   late ColorNotifire notifire;
-  final PageController _pageController = PageController(initialPage: 0);
+  // final PageController _pageController =
+  //     PageController(initialPage: 0);
   int _currentPage = 0;
 
   List<Widget> _buildPageIndicator() {
@@ -82,15 +99,22 @@ class _AccountState extends State<Account> {
                       color: notifire.getprimerycolor,
                       child: PageView(
                         physics: const ClampingScrollPhysics(),
-                        controller: _pageController,
+                        controller:
+                            PageController(initialPage: widget.initialPage!),
                         onPageChanged: (int page) {
                           setState(() {
                             _currentPage = page;
                           });
                         },
-                        children: const [
-                          Sms(),
-                          Verify(),
+                        children: [
+                          Sms(
+                              password: widget.password,
+                              email: widget.email,
+                              name: widget.name,
+                              birthDay: widget.birthDate),
+                          Verify(
+                            id: widget.id,
+                          ),
                           Interests(),
                           Media(),
                           Idealmatch(),
@@ -113,49 +137,54 @@ class _AccountState extends State<Account> {
                                     ),
                                   ),
                                   const Spacer(),
-                                  GestureDetector(
-                                    onTap: () {
-                                      _pageController.nextPage(
-                                          duration:
-                                              const Duration(microseconds: 300),
-                                          curve: Curves.easeIn);
-                                    },
-                                    child: Text(
-                                      CustomStrings.next,
-                                      style: TextStyle(
-                                          color: notifire.getpinksscolor,
-                                          fontSize: height / 40,
-                                          fontFamily: 'Gilroy Bold'),
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      _pageController.nextPage(
-                                          duration:
-                                              const Duration(microseconds: 300),
-                                          curve: Curves.easeIn);
-                                    },
-                                    child: Container(
-                                      height: height / 20,
-                                      width: width / 7,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          colors: [
-                                            notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color
-                                          ],
+                                  _currentPage == 1 || _currentPage == 0
+                                      ? SizedBox()
+                                      : GestureDetector(
+                                          onTap: () {
+                                            PageController(
+                                                    initialPage:
+                                                        widget.initialPage!)
+                                                .nextPage(
+                                                    duration: const Duration(
+                                                        microseconds: 300),
+                                                    curve: Curves.easeIn);
+                                          },
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                CustomStrings.next,
+                                                style: TextStyle(
+                                                    color:
+                                                        notifire.getpinksscolor,
+                                                    fontSize: height / 40,
+                                                    fontFamily: 'Gilroy Bold'),
+                                              ),
+                                              Container(
+                                                height: height / 20,
+                                                width: width / 7,
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  gradient: LinearGradient(
+                                                    begin: Alignment.topRight,
+                                                    end: Alignment.bottomLeft,
+                                                    colors: [
+                                                      notifire.getgcolor,
+                                                      notifire.getg2color,
+                                                      notifire.getg3color,
+                                                      notifire.getg4color
+                                                    ],
+                                                  ),
+                                                ),
+                                                child: const Center(
+                                                  child: Icon(
+                                                    Icons.arrow_forward,
+                                                    color: Colors.white,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.arrow_forward,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),
@@ -185,9 +214,14 @@ class _AccountState extends State<Account> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(context, MaterialPageRoute(builder: (context){
-                                        return const Bottom();
-                                      },),);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return const Bottom();
+                                          },
+                                        ),
+                                      );
                                     },
                                     child: Container(
                                       height: height / 20,
@@ -198,7 +232,10 @@ class _AccountState extends State<Account> {
                                           begin: Alignment.topRight,
                                           end: Alignment.bottomLeft,
                                           colors: [
-                                            notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color
+                                            notifire.getgcolor,
+                                            notifire.getg2color,
+                                            notifire.getg3color,
+                                            notifire.getg4color
                                           ],
                                         ),
                                       ),

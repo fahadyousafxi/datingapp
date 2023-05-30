@@ -1,5 +1,6 @@
 import 'package:dating/login/accounts/account.dart';
 import 'package:dating/utils/media.dart';
+import 'package:dating/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,6 +28,12 @@ class _SignUpState extends State<SignUp> {
       notifire.setIsDark = previusstate;
     }
   }
+
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _birthDayController = TextEditingController();
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +120,7 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _nameController,
                 CustomStrings.names,
                 notifire.getdarkscolor,
                 Image.asset("image/name.png"),
@@ -143,6 +151,7 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _emailController,
                 CustomStrings.emails,
                 notifire.getdarkscolor,
                 Padding(
@@ -176,6 +185,7 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _birthDayController,
                 CustomStrings.birthhdates,
                 notifire.getdarkscolor,
                 Image.asset(
@@ -208,6 +218,7 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _passwordController,
                 CustomStrings.passwords,
                 notifire.getdarkscolor,
                 Image.asset("image/password.png"),
@@ -221,14 +232,29 @@ class _SignUpState extends State<SignUp> {
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const Account();
-                      },
-                    ),
-                  );
+                  if (_nameController.text.trim().isNotEmpty &&
+                      _emailController.text.trim().isNotEmpty &&
+                      _birthDayController.text.trim().isNotEmpty &&
+                      _passwordController.text.trim().isNotEmpty) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Account(
+                            name: _nameController.text.trim().toString(),
+                            email: _emailController.text.toString().trim(),
+                            birthDate:
+                                _birthDayController.text.toString().trim(),
+                            password:
+                                _passwordController.text.toString().trim(),
+                            initialPage: 0,
+                          );
+                        },
+                      ),
+                    );
+                  } else {
+                    Utils.flutterToast('Please fill all the fields');
+                  }
                 },
                 child: Row(
                   children: [
@@ -250,7 +276,10 @@ class _SignUpState extends State<SignUp> {
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
                           colors: [
-                            notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color
+                            notifire.getgcolor,
+                            notifire.getg2color,
+                            notifire.getg3color,
+                            notifire.getg4color
                           ],
                         ),
                       ),
@@ -261,12 +290,13 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                     ),
-
                   ],
                 ),
               ),
             ),
-            SizedBox(height: height / 30,),
+            SizedBox(
+              height: height / 30,
+            ),
           ],
         ),
       ),

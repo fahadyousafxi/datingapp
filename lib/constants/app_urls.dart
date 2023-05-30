@@ -1,5 +1,5 @@
 class AppUrl {
-  static var baseUrl = '84.46.241.141:5001/api';
+  static var baseUrl = 'http://84.46.241.141:5001/api';
 
   /// Auth End Points
   static var signInEndPoint = '$baseUrl/signin';

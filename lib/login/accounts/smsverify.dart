@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../utils/colornotifire.dart';
 import '../../utils/custombutton.dart';
 import '../../utils/media.dart';
 import '../../utils/string.dart';
+import '../../view_model/auth_view_model.dart';
 
 class Verify extends StatefulWidget {
-  const Verify({Key? key}) : super(key: key);
+  final String? id;
+  const Verify({required this.id, Key? key}) : super(key: key);
 
   @override
   State<Verify> createState() => _VerifyState();
 }
 
 class _VerifyState extends State<Verify> {
-
   late ColorNotifire notifire;
 
   getdarkmodepreviousstate() async {
@@ -28,8 +30,11 @@ class _VerifyState extends State<Verify> {
     }
   }
 
+  String? otp;
+
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -81,15 +86,32 @@ class _VerifyState extends State<Verify> {
                     SizedBox(
                       height: height / 10,
                     ),
-
                   ],
                 ),
               ],
             ),
             animatedBorders(),
-            SizedBox(height: height / 5,),
-            Custombutton.button(CustomStrings.continues,notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color),
-            SizedBox(height: height / 50,),
+            SizedBox(
+              height: height / 5,
+            ),
+            InkWell(
+              onTap: () {
+                Map data = {
+                  "id": widget.id,
+                  "otp": otp,
+                };
+                authViewModel.verifyOTPApi(context, data: data);
+              },
+              child: Custombutton.button(
+                  CustomStrings.continues,
+                  notifire.getgcolor,
+                  notifire.getg2color,
+                  notifire.getg3color,
+                  notifire.getg4color),
+            ),
+            SizedBox(
+              height: height / 50,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -99,12 +121,19 @@ class _VerifyState extends State<Verify> {
                       color: notifire.getgreycolor,
                       fontSize: height / 50,
                       fontFamily: 'Gilroy Medium'),
-                ),  Text(
-                  CustomStrings.resend,
-                  style: TextStyle(
-                      color: notifire.getdarkpinkscolor,
-                      fontSize: height / 50,
-                      fontFamily: 'Gilroy Bold'),
+                ),
+                InkWell(
+                  onTap: () {
+                    authViewModel.sendOTPApi(context,
+                        data: {'id': widget.id}, id: widget.id);
+                  },
+                  child: Text(
+                    CustomStrings.resend,
+                    style: TextStyle(
+                        color: notifire.getdarkpinkscolor,
+                        fontSize: height / 50,
+                        fontFamily: 'Gilroy Bold'),
+                  ),
                 ),
               ],
             ),
@@ -113,11 +142,20 @@ class _VerifyState extends State<Verify> {
       ),
     );
   }
+
   Widget animatedBorders() {
     return Container(
       color: notifire.getprimerycolor,
-      height: height / 12, width: width / 1.2,
-      child: PinPut(textStyle: TextStyle(color: Colors.white,fontFamily: "Gilroy Bold",fontSize: height / 25),
+      height: height / 12,
+      width: width / 1.2,
+      child: PinPut(
+        onSubmit: (value) {
+          otp = value;
+        },
+        textStyle: TextStyle(
+            color: Colors.white,
+            fontFamily: "Gilroy Bold",
+            fontSize: height / 25),
         fieldsCount: 4,
         eachFieldWidth: width / 6.5,
         withCursor: false,
@@ -131,13 +169,17 @@ class _VerifyState extends State<Verify> {
           color: notifire.getdarkpinkscolor,
           borderRadius: BorderRadius.circular(10.0),
         ),
-        followingFieldDecoration: BoxDecoration( gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [
-            notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color
-          ],
-        ),
+        followingFieldDecoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              notifire.getgcolor,
+              notifire.getg2color,
+              notifire.getg3color,
+              notifire.getg4color
+            ],
+          ),
           borderRadius: BorderRadius.circular(10.0),
         ).copyWith(
           borderRadius: BorderRadius.circular(10.0),

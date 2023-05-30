@@ -1,46 +1,60 @@
- 
 import 'package:dating/utils/media.dart';
+import 'package:dating/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../utils/colornotifire.dart';
 import '../../utils/custombutton.dart';
 import '../../utils/string.dart';
+import '../../view_model/auth_view_model.dart';
 
 class Sms extends StatefulWidget {
-  const Sms({Key? key}) : super(key: key);
+  String? name;
+  String? email;
+  String? birthDay;
+  String? password;
+  Sms(
+      {required this.password,
+      required this.email,
+      required this.name,
+      required this.birthDay,
+      Key? key})
+      : super(key: key);
 
   @override
   State<Sms> createState() => _SmsState();
 }
 
 class _SmsState extends State<Sms> {
+  String countryCode = '+92';
   final List<Map> _myjson = [
     {
       'id': '1',
-      'image': 'image/flag.png',
-      'Text': "+91",
+      'image': '🇬🇧',
+      'Text': "+44",
     },
     {
       'id': '2',
-      'image': 'image/flagtwo.png.png',
+      'image': '🇵🇰',
       'Text': "+92",
     },
     {
       'id': '3',
-      'image': 'image/flagthree.jpg',
-      'Text': "+93",
+      'image': '🇺🇸',
+      'Text': "+1",
     },
     {
       'id': '4',
-      'image': 'image/flagfour.png',
+      'image': '🇮🇳',
       'Text': "+91",
     },
     {
       'id': '5',
-      'image': 'image/flagfive.png',
-      'Text': "+95",
-    }
+      'image': '🇫🇷',
+      'Text': "+33",
+    },
   ];
   String? _selectedindex;
   late ColorNotifire notifire;
@@ -55,8 +69,11 @@ class _SmsState extends State<Sms> {
     }
   }
 
+  TextEditingController _phoneNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -121,10 +138,13 @@ class _SmsState extends State<Sms> {
                           child: DropdownButtonHideUnderline(
                             child: ButtonTheme(
                               buttonColor: notifire.getdarkpinkscolor,
-                              child: DropdownButton<String>(dropdownColor: notifire.getpinkscolor.withOpacity(0.4),
+                              child: DropdownButton<String>(
+                                dropdownColor:
+                                    notifire.getpinkscolor.withOpacity(0.4),
                                 icon: Padding(
                                   padding: EdgeInsets.only(right: width / 100),
-                                  child: const Icon(Icons.keyboard_arrow_down_rounded,
+                                  child: const Icon(
+                                      Icons.keyboard_arrow_down_rounded,
                                       color: Colors.white),
                                 ),
                                 hint: Row(
@@ -151,6 +171,15 @@ class _SmsState extends State<Sms> {
                                 onChanged: (newValue) {
                                   setState(() {
                                     _selectedindex = newValue;
+
+                                    int index =
+                                        int.parse(newValue.toString()) - 1;
+
+                                    countryCode = _myjson[index]['Text'];
+
+                                    if (kDebugMode) {
+                                      print(countryCode);
+                                    }
                                   });
                                 },
                                 items: _myjson.map(
@@ -162,9 +191,8 @@ class _SmsState extends State<Sms> {
                                           SizedBox(
                                             width: width / 40,
                                           ),
-                                          Image.asset(
+                                          Text(
                                             map["image"].toString(),
-                                            width: width / 15,
                                           ),
                                           SizedBox(
                                             width: width / 40,
@@ -195,17 +223,19 @@ class _SmsState extends State<Sms> {
                           height: height / 16,
                           width: width / 2,
                           child: TextField(
+                            controller: _phoneNumber,
                             keyboardType: TextInputType.number,
                             style: TextStyle(color: notifire.getdarkscolor),
                             decoration: InputDecoration(
                               filled: true,
-                              contentPadding: EdgeInsets.only(left: height / 80),
+                              contentPadding:
+                                  EdgeInsets.only(left: height / 80),
                               fillColor: notifire.getprimerycolor,
                               border: OutlineInputBorder(
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              hintText: "800-111-2222",
+                              hintText: "800-1112222",
                               hintStyle: TextStyle(
                                 color: Colors.grey,
                                 fontSize: height / 40,
@@ -213,19 +243,38 @@ class _SmsState extends State<Sms> {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
               ],
             ),
-            SizedBox(height: height / 4.5,),
+            SizedBox(
+              height: height / 4.5,
+            ),
             GestureDetector(
-                onTap: (){
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) => const Verify(),),);
+                onTap: () {
+                  if (_phoneNumber.text.isNotEmpty || widget.name == '') {
+                    Map data = {
+                      'name': widget.name,
+                      'email': widget.email,
+                      'phoneNumber':
+                          countryCode + _phoneNumber.text.toString().trim(),
+                      'birthDate': widget.birthDay,
+                      'password': widget.password,
+                    };
+
+                    authViewModel.registerApi(context, data: data);
+                  } else {
+                    Utils.flutterToast('Enter Phone Number or something wrong');
+                  }
                 },
-                child: Custombutton.button(CustomStrings.continues,notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color)),
+                child: Custombutton.button(
+                    CustomStrings.continues,
+                    notifire.getgcolor,
+                    notifire.getg2color,
+                    notifire.getg3color,
+                    notifire.getg4color)),
           ],
         ),
       ),

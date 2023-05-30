@@ -1,12 +1,13 @@
 import 'package:dating/utils/media.dart';
+import 'package:dating/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../bottom/bottombar.dart';
 import '../utils/colornotifire.dart';
 import '../utils/itextfield.dart';
 import '../utils/string.dart';
+import '../view_model/auth_view_model.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -28,8 +29,12 @@ class _SignInState extends State<SignIn> {
     }
   }
 
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -115,6 +120,7 @@ class _SignInState extends State<SignIn> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _emailController,
                 CustomStrings.emails,
                 notifire.getdarkscolor,
                 Padding(
@@ -148,6 +154,7 @@ class _SignInState extends State<SignIn> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
+                _passwordController,
                 CustomStrings.passwords,
                 notifire.getdarkscolor,
                 Image.asset("image/password.png"),
@@ -159,12 +166,19 @@ class _SignInState extends State<SignIn> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Bottom(),
-                  ),
-                );
+                if (_emailController.text.isNotEmpty &&
+                    _passwordController.text.isNotEmpty) {
+                  Map data = {
+                    'email': _emailController.text.toString().trim(),
+                    'password': _passwordController.text.toString(),
+                  };
+
+                  authViewModel.loginApi(context, data: data);
+                } else {
+                  Utils.flutterToast('Enter Email and Password');
+                  print(
+                      '**********************  enter Email and Password ****************');
+                }
               },
               child: Container(
                 height: height / 17,

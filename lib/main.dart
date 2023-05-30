@@ -1,15 +1,16 @@
 import 'package:dating/spleshscreen.dart';
+import 'package:dating/view_model/auth_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'utils/colornotifire.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ColorNotifire(),
-        ),
+        ChangeNotifierProvider(create: (_) => ColorNotifire()),
+        ChangeNotifierProvider(create: (_) => AuthViewModel()),
       ],
       child: const MaterialApp(
         home: Spleshscreen(),
@@ -18,7 +19,6 @@ void main() {
     ),
   );
 }
-
 
 //
 //

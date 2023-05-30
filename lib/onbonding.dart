@@ -1,12 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dating/login/accounts/account.dart';
 import 'package:dating/login/meeting.dart';
+import 'package:dating/login/signIn.dart';
 import 'package:dating/utils/custombutton.dart';
 import 'package:dating/utils/media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'utils/colornotifire.dart';
 import 'utils/string.dart';
 
@@ -31,6 +32,7 @@ class _OnbondingState extends State<Onbonding> {
     }
     return list;
   }
+
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
@@ -40,6 +42,7 @@ class _OnbondingState extends State<Onbonding> {
       notifire.setIsDark = previusstate;
     }
   }
+
   final List<dynamic> imageList = [
     "image/match1.png",
     "image/match2.png",
@@ -386,16 +389,21 @@ class _OnbondingState extends State<Onbonding> {
                         height: height / 10,
                       ),
                       GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Meeting(),
-                              ),
-                            );
-                          },
-                          child:
-                              Custombutton.button(CustomStrings.createaccount,notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color),),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const Meeting(),
+                            ),
+                          );
+                        },
+                        child: Custombutton.button(
+                            CustomStrings.createaccount,
+                            notifire.getgcolor,
+                            notifire.getg2color,
+                            notifire.getg3color,
+                            notifire.getg4color),
+                      ),
                       SizedBox(
                         height: height / 50,
                       ),
@@ -414,8 +422,13 @@ class _OnbondingState extends State<Onbonding> {
                             width: width / 100,
                           ),
                           GestureDetector(
-                            onTap: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Account(),),);
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignIn(),
+                                ),
+                              );
                             },
                             child: Container(
                               color: Colors.transparent,
@@ -455,11 +468,15 @@ class _OnbondingState extends State<Onbonding> {
                               ),
                             );
                           },
-                          child:
-                              Custombutton.button(CustomStrings.createaccount,notifire.getgcolor,notifire.getg2color,notifire.getg3color,notifire.getg4color)),
-                      SizedBox(
-                        height: height / 50,
-                      ),
+                          child: Custombutton.button(
+                              CustomStrings.createaccount,
+                              notifire.getgcolor,
+                              notifire.getg2color,
+                              notifire.getg3color,
+                              notifire.getg4color)),
+                      // SizedBox(
+                      //   height: height / 50,
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -474,14 +491,24 @@ class _OnbondingState extends State<Onbonding> {
                           SizedBox(
                             width: width / 100,
                           ),
-                          Text(
-                            CustomStrings.signin,
-                            textAlign: TextAlign.start,
-                            style: TextStyle(
-                                fontFamily: 'Gilroy Medium',
-                                color: notifire.getdarkpinkscolor,
-                                fontSize: height / 50),
-                          ),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignIn(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              CustomStrings.signin,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontFamily: 'Gilroy Medium',
+                                  color: notifire.getdarkpinkscolor,
+                                  fontSize: height / 50),
+                            ),
+                          )
                         ],
                       ),
                     ],
