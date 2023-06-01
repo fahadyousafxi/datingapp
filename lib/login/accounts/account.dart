@@ -1,4 +1,5 @@
 import 'package:dating/bottom/bottombar.dart';
+import 'package:dating/login/accounts/create_profile.dart';
 import 'package:dating/login/accounts/sms.dart';
 import 'package:dating/login/accounts/smsverify.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
 import '../../utils/string.dart';
-import 'idealmatch.dart';
 import 'interests.dart';
 import 'upload.dart';
 
@@ -117,7 +117,8 @@ class _AccountState extends State<Account> {
                           ),
                           Interests(),
                           Media(),
-                          Idealmatch(),
+                          // Idealmatch(),
+                          CreateProfile()
                         ],
                       ),
                     ),

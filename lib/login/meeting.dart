@@ -103,7 +103,7 @@ class _MeetingState extends State<Meeting> {
                       width: width / 8,
                     ),
                     Text(
-                      '       Login',
+                      'Login with Email',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontFamily: 'Gilroy Bold',
@@ -117,65 +117,65 @@ class _MeetingState extends State<Meeting> {
             SizedBox(
               height: height / 40,
             ),
-            // GestureDetector(
-            //   onTap: () {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(
-            //         builder: (context) => Account(
-            //           name: '',
-            //           email: '',
-            //           birthDate: '',
-            //           password: '',
-            //           initialPage: 0,
-            //         ),
-            //       ),
-            //     );
-            //   },
-            //   child: Container(
-            //     height: height / 17,
-            //     width: width / 1.3,
-            //     decoration: BoxDecoration(
-            //       color: notifire.getpinkscolor,
-            //       borderRadius: const BorderRadius.all(
-            //         Radius.circular(20),
-            //       ),
-            //     ),
-            //     child: Row(
-            //       children: [
-            //         SizedBox(
-            //           width: width / 90,
-            //         ),
-            //         Container(
-            //           decoration: const BoxDecoration(
-            //             color: Colors.white,
-            //             shape: BoxShape.circle,
-            //           ),
-            //           height: height / 17,
-            //           width: width / 10,
-            //           child: Image.asset(
-            //             "image/call.png",
-            //             color: notifire.getpinkscolor,
-            //           ),
-            //         ),
-            //         SizedBox(
-            //           width: width / 8,
-            //         ),
-            //         Text(
-            //           CustomStrings.login,
-            //           textAlign: TextAlign.start,
-            //           style: TextStyle(
-            //               fontFamily: 'Gilroy Bold',
-            //               color: Colors.white,
-            //               fontSize: height / 48),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // SizedBox(
-            //   height: height / 40,
-            // ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Account(
+                      name: '',
+                      email: '',
+                      birthDate: '',
+                      password: '',
+                      initialPage: 0,
+                    ),
+                  ),
+                );
+              },
+              child: Container(
+                height: height / 17,
+                width: width / 1.3,
+                decoration: BoxDecoration(
+                  color: notifire.getpinkscolor,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: width / 90,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      height: height / 17,
+                      width: width / 10,
+                      child: Image.asset(
+                        "image/call.png",
+                        color: notifire.getpinkscolor,
+                      ),
+                    ),
+                    SizedBox(
+                      width: width / 8,
+                    ),
+                    Text(
+                      CustomStrings.login,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontFamily: 'Gilroy Bold',
+                          color: Colors.white,
+                          fontSize: height / 48),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: height / 40,
+            ),
             GestureDetector(
               onTap: () {
                 Navigator.push(

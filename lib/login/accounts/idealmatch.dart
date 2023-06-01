@@ -27,9 +27,24 @@ class _IdealmatchState extends State<Idealmatch> {
   }
 
   int selectedindex = 0;
-  final List high = [height / 32,height / 32,height / 25,height / 30,];
-  final List name = [CustomStrings.love,CustomStrings.friends,CustomStrings.fling,CustomStrings.business,];
-  final List img = ["image/love.png","image/friends.png", "image/fling.png", "image/bussiness.png",];
+  final List high = [
+    height / 32,
+    height / 32,
+    height / 25,
+    height / 30,
+  ];
+  final List name = [
+    CustomStrings.love,
+    CustomStrings.friends,
+    CustomStrings.fling,
+    CustomStrings.business,
+  ];
+  final List img = [
+    "image/love.png",
+    "image/friends.png",
+    "image/fling.png",
+    "image/bussiness.png",
+  ];
   @override
   Widget build(BuildContext context) {
     notifire = Provider.of<ColorNotifire>(context, listen: true);
@@ -44,6 +59,8 @@ class _IdealmatchState extends State<Idealmatch> {
               SizedBox(
                 height: height / 15,
               ),
+
+              /// have to change this page
               Row(
                 children: [
                   Container(
@@ -97,37 +114,38 @@ class _IdealmatchState extends State<Idealmatch> {
               SizedBox(
                 height: height / 10,
               ),
-          Container(
-            color: notifire.getprimerycolor,
-            height: height / 2.02,
-            width: width,
-            child: GridView.builder(
-              padding: EdgeInsets.only(bottom: height / 15),
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: height / 4.5,
-                mainAxisExtent: width / 2.3,
-                childAspectRatio: 3 / 2,
-                crossAxisSpacing: height / 50,
-                mainAxisSpacing: height / 50,
-              ),
-              itemCount: name.length,
-              itemBuilder: (BuildContext ctx, index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedindex = index;
-                    });
-                  },
-                  child: matches(
-                    img[index],
-                    high[index],
-                    name[index],
-                    selectedindex == index ? notifire.getlightpinkcolor : notifire.getprimerycolor
+              Container(
+                color: notifire.getprimerycolor,
+                height: height / 2.02,
+                width: width,
+                child: GridView.builder(
+                  padding: EdgeInsets.only(bottom: height / 15),
+                  gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: height / 4.5,
+                    mainAxisExtent: width / 2.3,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: height / 50,
+                    mainAxisSpacing: height / 50,
                   ),
-                );
-              },
-            ),
-          ),
+                  itemCount: name.length,
+                  itemBuilder: (BuildContext ctx, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedindex = index;
+                        });
+                      },
+                      child: matches(
+                          img[index],
+                          high[index],
+                          name[index],
+                          selectedindex == index
+                              ? notifire.getlightpinkcolor
+                              : notifire.getprimerycolor),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),
@@ -135,23 +153,22 @@ class _IdealmatchState extends State<Idealmatch> {
     );
   }
 
-  Widget matches(img, high, txt,clr) {
+  Widget matches(img, high, txt, clr) {
     return Container(
       height: height / 4.5,
       width: width / 2.3,
       decoration: BoxDecoration(
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: notifire.getpinkscolor,
-        //     blurRadius: 10.0,
-        //   ),
-        // ],
-        color: notifire.getlightingcolor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(15),
-        ),
-        border: Border.all(color: clr)
-      ),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: notifire.getpinkscolor,
+          //     blurRadius: 10.0,
+          //   ),
+          // ],
+          color: notifire.getlightingcolor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+          border: Border.all(color: clr)),
       child: Column(
         children: [
           SizedBox(

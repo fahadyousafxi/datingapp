@@ -35,6 +35,10 @@ class _SignUpState extends State<SignUp> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  int bDYear = DateTime.now().year - 5;
+  int bDMonth = DateTime.now().month;
+  int bDDay = DateTime.now().day;
+
   @override
   Widget build(BuildContext context) {
     notifire = Provider.of<ColorNotifire>(context, listen: true);
@@ -130,6 +134,25 @@ class _SignUpState extends State<SignUp> {
             SizedBox(
               height: height / 40,
             ),
+
+            /// ios style calender testing by Fahad
+            // SizedBox(
+            //   height: 120,
+            //   child: CupertinoDatePicker(
+            //     mode: CupertinoDatePickerMode.date,
+            //     initialDateTime: DateTime.now(),
+            //     onDateTimeChanged: (DateTime newDateTime) {
+            //       // Do something
+            //       print('${newDateTime.month}');
+            //       print('${newDateTime.year}');
+            //       print('${newDateTime.day}');
+            //     },
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 22,
+            // ),
+
             Row(
               children: [
                 SizedBox(
@@ -179,6 +202,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ],
             ),
+
             SizedBox(
               height: height / 100,
             ),
@@ -186,7 +210,7 @@ class _SignUpState extends State<SignUp> {
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
                 _birthDayController,
-                CustomStrings.birthhdates,
+                'dd / mm / yyyy',
                 notifire.getdarkscolor,
                 Image.asset(
                   "image/birthday.png",
@@ -194,6 +218,156 @@ class _SignUpState extends State<SignUp> {
                 notifire.getlightingcolor,
               ),
             ),
+
+            // InkWell(
+            //   onTap: () {
+            //     showCupertinoModalPopup(
+            //       // barrierColor: Colors.red,
+            //       context: context,
+            //       builder: (BuildContext context) {
+            //         return Container(
+            //           height: 200,
+            //           margin: EdgeInsets.symmetric(horizontal: 33, vertical: 0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.only(
+            //               topLeft: Radius.circular(22),
+            //               topRight: Radius.circular(22),
+            //             ),
+            //             color: notifire.getprimerycolor,
+            //           ),
+            //           child: Column(
+            //             crossAxisAlignment: CrossAxisAlignment.end,
+            //             children: [
+            //               // TextButton(
+            //               //     onPressed: () {
+            //               //       Navigator.pop(context);
+            //               //     },
+            //               //     child: Text('Done')),
+            //               Padding(
+            //                 padding: const EdgeInsets.symmetric(
+            //                   vertical: 30.0,
+            //                 ),
+            //                 child: SizedBox(
+            //                   height: 130,
+            //                   child: CupertinoDatePicker(
+            //                     mode: CupertinoDatePickerMode.date,
+            //                     initialDateTime: DateTime.now(),
+            //                     onDateTimeChanged: (DateTime newDateTime) {
+            //                       // Do something
+            //                       setState(() {
+            //                         bDYear = newDateTime.year;
+            //                         bDMonth = newDateTime.month;
+            //                         bDDay = newDateTime.day;
+            //                       });
+            //                       if (kDebugMode) {
+            //                         print('${newDateTime.year}');
+            //                         print('${newDateTime.month}');
+            //                         print('${newDateTime.day}');
+            //                       }
+            //                     },
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         );
+            //         //   Container(
+            //         //   height: 333,
+            //         //   color: Colors.grey.shade200,
+            //         // );
+            //       },
+            //     );
+            //   },
+            //   child: Container(
+            //     margin: EdgeInsets.symmetric(horizontal: width / 18),
+            //     height: height / 16,
+            //     width: width,
+            //     decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(10),
+            //       color: notifire.getlightingcolor,
+            //     ),
+            //     child: Row(
+            //       children: [
+            //         Padding(
+            //           padding: EdgeInsets.all(height / 50),
+            //           child: Image.asset(
+            //             "image/birthday.png",
+            //           ),
+            //         ),
+            //         Text(
+            //           '$bDDay - $bDMonth - $bDYear',
+            //           textAlign: TextAlign.start,
+            //           style: TextStyle(
+            //
+            //               // fontFamily: 'Gilroy Bold',
+            //               // fontWeight: FontWeight.w400,
+            //               color: notifire.getdarkscolor,
+            //               fontSize: height / 60),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+
+            // calender by a button
+            // Center(
+            //   child: ElevatedButton(
+            //       onPressed: () {
+            //         showCupertinoModalPopup(
+            //           // barrierColor: Colors.red,
+            //           context: context,
+            //           builder: (BuildContext context) {
+            //             return Container(
+            //               height: 250,
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(22),
+            //                 color: Colors.grey.shade200,
+            //               ),
+            //               child: Column(
+            //                 crossAxisAlignment: CrossAxisAlignment.end,
+            //                 children: [
+            //                   TextButton(
+            //                       onPressed: () {
+            //                         Navigator.pop(context);
+            //                       },
+            //                       child: Text('Done')),
+            //                   Padding(
+            //                     padding:
+            //                         const EdgeInsets.symmetric(vertical: 30.0),
+            //                     child: SizedBox(
+            //                       height: 130,
+            //                       child: CupertinoDatePicker(
+            //                         mode: CupertinoDatePickerMode.date,
+            //                         initialDateTime: DateTime.now(),
+            //                         onDateTimeChanged: (DateTime newDateTime) {
+            //                           // Do something
+            //                           setState(() {
+            //                             bDYear = newDateTime.year;
+            //                             bDMonth = newDateTime.month;
+            //                             bDDay = newDateTime.day;
+            //                           });
+            //                           if (kDebugMode) {
+            //                             print('${newDateTime.year}');
+            //                             print('${newDateTime.month}');
+            //                             print('${newDateTime.day}');
+            //                           }
+            //                         },
+            //                       ),
+            //                     ),
+            //                   ),
+            //                 ],
+            //               ),
+            //             );
+            //             //   Container(
+            //             //   height: 333,
+            //             //   color: Colors.grey.shade200,
+            //             // );
+            //           },
+            //         );
+            //       },
+            //       child: Text('Testing')),
+            // ),
+
             SizedBox(
               height: height / 40,
             ),

@@ -710,363 +710,370 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Container(
-            height: mediaHeight * 0.78,
-            child: SingleChildScrollView(
-              child: Column(children: [
-                // SizedBox(
-                //   height: height / 40,
-                // ),
-                Stack(
-                  children: [
-                    Image.asset("image/bg.png"),
-                    Column(
-                      children: [
-                        SizedBox(
-                          height: height / 9,
-                        ),
-                        Stack(
-                          children: [
-                            Center(
-                              child: GestureDetector(
-                                // onTap: () {
-                                //   _openCamera(context);
-                                // },
-                                child: (imageFile == null)
-                                    ? Container(
-                                        color: Colors.transparent,
-                                        height: height / 4.5,
-                                        width: width / 2,
-                                        child: CircleAvatar(
-                                          backgroundColor:
-                                              notifire.getlightcolor,
-                                          child: Container(
-                                            height: height / 4.7,
-                                            width: width / 2.4,
-                                            decoration: const BoxDecoration(
-                                                color: Colors.transparent,
-                                                shape: BoxShape.circle),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(400),
-                                              child: Image.asset(
-                                                "image/profile.png",
-                                                height: height / 4.7,
-                                                width: width,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    : Container(
-                                        height: height / 4.5,
-                                        width: width / 2,
-                                        color: Colors.transparent,
-                                        child: CircleAvatar(
-                                          backgroundColor:
-                                              notifire.getlightcolor,
-                                          child: Container(
-                                            height: height / 4.7,
-                                            width: width / 2.4,
-                                            decoration: const BoxDecoration(
-                                                color: Colors.transparent,
-                                                shape: BoxShape.circle),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(400),
-                                              child: Image.file(
-                                                File(
-                                                  imageFile!.path,
+          Expanded(
+            child: Container(
+              // height: mediaHeight * 0.58,
+              child: SingleChildScrollView(
+                child: Column(children: [
+                  SizedBox(
+                    height: height / 40,
+                  ),
+                  Stack(
+                    children: [
+                      Image.asset("image/bg.png"),
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: height / 9,
+                          ),
+                          Stack(
+                            children: [
+                              Center(
+                                child: GestureDetector(
+                                  // onTap: () {
+                                  //   _openCamera(context);
+                                  // },
+                                  child: (imageFile == null)
+                                      ? Container(
+                                          color: Colors.transparent,
+                                          height: height / 4.5,
+                                          width: width / 2,
+                                          child: CircleAvatar(
+                                            backgroundColor:
+                                                notifire.getlightcolor,
+                                            child: Container(
+                                              height: height / 4.7,
+                                              width: width / 2.4,
+                                              decoration: const BoxDecoration(
+                                                  color: Colors.transparent,
+                                                  shape: BoxShape.circle),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(400),
+                                                child: Image.asset(
+                                                  "image/profile.png",
+                                                  height: height / 4.7,
+                                                  width: width,
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                height: height / 4.7,
-                                                width: width,
-                                                fit: BoxFit.cover,
                                               ),
                                             ),
                                           ),
+                                        )
+                                      : Container(
+                                          height: height / 4.5,
+                                          width: width / 2,
+                                          color: Colors.transparent,
+                                          child: CircleAvatar(
+                                            backgroundColor:
+                                                notifire.getlightcolor,
+                                            child: Container(
+                                              height: height / 4.7,
+                                              width: width / 2.4,
+                                              decoration: const BoxDecoration(
+                                                  color: Colors.transparent,
+                                                  shape: BoxShape.circle),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(400),
+                                                child: Image.file(
+                                                  File(
+                                                    imageFile!.path,
+                                                  ),
+                                                  height: height / 4.7,
+                                                  width: width,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          // child: ClipRRect(
+                                          //   borderRadius: const BorderRadius.all(
+                                          //     Radius.circular(15),
+                                          //   ),
+                                          //   child: Image.file(
+                                          //     File(
+                                          //       imageFile!.path,
+                                          //     ),
+                                          //     fit: BoxFit.cover,
+                                          //   ),
+                                          // ),
                                         ),
-                                        // child: ClipRRect(
-                                        //   borderRadius: const BorderRadius.all(
-                                        //     Radius.circular(15),
-                                        //   ),
-                                        //   child: Image.file(
-                                        //     File(
-                                        //       imageFile!.path,
-                                        //     ),
-                                        //     fit: BoxFit.cover,
-                                        //   ),
-                                        // ),
-                                      ),
-                              ),
-                            ),
-                            Column(
-                              children: [
-                                SizedBox(
-                                  height: height / 50,
                                 ),
-                                Row(
-                                  children: [
-                                    SizedBox(
-                                      width: width / 1.65,
-                                    ),
-                                    // Container(
-                                    //   height: height / 28,
-                                    //   width: width / 10,
-                                    //   decoration: BoxDecoration(
-                                    //       color: notifire.getlightcolor,
-                                    //       shape: BoxShape.circle),
-                                    //   child: Icon(Icons.edit,
-                                    //       color: notifire.getgreycolor,
-                                    //       size: height / 40),
-                                    // ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: height / 300,
-                        ),
-                        Text(
-                          CustomStrings.hayes,
-                          style: TextStyle(
-                              color: notifire.getlightcolor,
-                              fontSize: height / 40,
-                              fontFamily: 'Gilroy Bold'),
-                        ),
-                        SizedBox(
-                          height: height / 300,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.person,
-                                color: notifire.getlightcolor,
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Age, 25',
-                                style: TextStyle(
-                                    color: notifire.getlightcolor,
-                                    fontSize: height / 60,
-                                    fontFamily: 'Gilroy Bold'),
-                              ),
-                            ]),
-                        SizedBox(
-                          height: height / 300,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.location_city,
-                                color: notifire.getlightcolor,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Newyork, USA',
-                                style: TextStyle(
-                                    color: notifire.getlightcolor,
-                                    fontSize: height / 60,
-                                    fontFamily: 'Gilroy Bold'),
-                              ),
-                            ]),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(bottom: height / 20),
-                              child: Column(
+                              Column(
                                 children: [
                                   SizedBox(
-                                    height: height / 100,
+                                    height: height / 50,
+                                  ),
+                                  Row(
+                                    children: [
+                                      SizedBox(
+                                        width: width / 1.65,
+                                      ),
+                                      // Container(
+                                      //   height: height / 28,
+                                      //   width: width / 10,
+                                      //   decoration: BoxDecoration(
+                                      //       color: notifire.getlightcolor,
+                                      //       shape: BoxShape.circle),
+                                      //   child: Icon(Icons.edit,
+                                      //       color: notifire.getgreycolor,
+                                      //       size: height / 40),
+                                      // ),
+                                    ],
                                   ),
                                 ],
                               ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: height / 50),
-                              child: Column(
-                                children: [],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height / 90,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width / 18),
-                  child: Container(
-                    height: height / 4,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                      color: notifire.getpinkscolor.withOpacity(0.3),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.transparent,
-                          height: height / 10,
-                          child: PageView(
-                            physics: const ClampingScrollPhysics(),
-                            controller: _pageController,
-                            onPageChanged: (int page) {
-                              setState(() {
-                                _currentPage = page;
-                              });
-                            },
-                            children: <Widget>[
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
                             ],
                           ),
-                        ),
-                        SizedBox(
-                          height: height / 50,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: _buildPageIndicator(),
-                        ),
-                        SizedBox(
-                          height: height / 30,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const Upgrade(),
-                            //   ),
-                            // );
-                          },
-                          child: Container(
-                            height: height / 20,
-                            width: width / 2.5,
-                            decoration: BoxDecoration(
-                              color: notifire.getlightingcolor.withOpacity(0.9),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                CustomStrings.vip,
-                                style: TextStyle(
-                                    color: notifire.getdarkspinkcolor,
-                                    fontSize: height / 60,
-                                    fontFamily: 'Gilroy Bold'),
-                              ),
-                            ),
+                          SizedBox(
+                            height: height / 300,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: height / 20,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width / 18),
-                  child: Container(
-                    height: height / 4,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                      color: notifire.getpinkscolor.withOpacity(0.3),
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          color: Colors.transparent,
-                          height: height / 10,
-                          child: PageView(
-                            physics: const ClampingScrollPhysics(),
-                            controller: _pageController2,
-                            onPageChanged: (int page) {
-                              setState(() {
-                                _currentPage2 = page;
-                              });
-                            },
-                            children: <Widget>[
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
-                              matches(),
+                          Text(
+                            CustomStrings.hayes,
+                            style: TextStyle(
+                                color: notifire.getlightcolor,
+                                fontSize: height / 40,
+                                fontFamily: 'Gilroy Bold'),
+                          ),
+                          SizedBox(
+                            height: height / 300,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: notifire.getlightcolor,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Age, 25',
+                                  style: TextStyle(
+                                      color: notifire.getlightcolor,
+                                      fontSize: height / 60,
+                                      fontFamily: 'Gilroy Bold'),
+                                ),
+                              ]),
+                          SizedBox(
+                            height: height / 300,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.location_city,
+                                  color: notifire.getlightcolor,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Newyork, USA',
+                                  style: TextStyle(
+                                      color: notifire.getlightcolor,
+                                      fontSize: height / 60,
+                                      fontFamily: 'Gilroy Bold'),
+                                ),
+                              ]),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: height / 20),
+                                child: Column(
+                                  children: [
+                                    SizedBox(
+                                      height: height / 100,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: height / 50),
+                                child: Column(
+                                  children: [],
+                                ),
+                              ),
                             ],
                           ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: height / 90,
+                  ),
+                  SizedBox(
+                    height: height / 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width / 18),
+                    child: Container(
+                      height: height / 4,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
                         ),
-                        SizedBox(
-                          height: height / 50,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: _buildPageIndicator2(),
-                        ),
-                        SizedBox(
-                          height: height / 30,
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => const Upgrade(),
-                            //   ),
-                            // );
-                          },
-                          child: Container(
-                            height: height / 20,
-                            width: width / 2.5,
-                            decoration: BoxDecoration(
-                              color: notifire.getlightingcolor.withOpacity(0.9),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(20),
-                              ),
+                        color: notifire.getpinkscolor.withOpacity(0.3),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            color: Colors.transparent,
+                            height: height / 10,
+                            child: PageView(
+                              physics: const ClampingScrollPhysics(),
+                              controller: _pageController,
+                              onPageChanged: (int page) {
+                                setState(() {
+                                  _currentPage = page;
+                                });
+                              },
+                              children: <Widget>[
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                              ],
                             ),
-                            child: Center(
-                              child: Text(
-                                CustomStrings.vip,
-                                style: TextStyle(
-                                    color: notifire.getdarkspinkcolor,
-                                    fontSize: height / 60,
-                                    fontFamily: 'Gilroy Bold'),
+                          ),
+                          SizedBox(
+                            height: height / 50,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: _buildPageIndicator(),
+                          ),
+                          SizedBox(
+                            height: height / 30,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const Upgrade(),
+                              //   ),
+                              // );
+                            },
+                            child: Container(
+                              height: height / 20,
+                              width: width / 2.5,
+                              decoration: BoxDecoration(
+                                color:
+                                    notifire.getlightingcolor.withOpacity(0.9),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  CustomStrings.vip,
+                                  style: TextStyle(
+                                      color: notifire.getdarkspinkcolor,
+                                      fontSize: height / 60,
+                                      fontFamily: 'Gilroy Bold'),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: height / 40,
-                ),
-              ]),
+                  SizedBox(
+                    height: height / 20,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: width / 18),
+                    child: Container(
+                      height: height / 4,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        color: notifire.getpinkscolor.withOpacity(0.3),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            color: Colors.transparent,
+                            height: height / 10,
+                            child: PageView(
+                              physics: const ClampingScrollPhysics(),
+                              controller: _pageController2,
+                              onPageChanged: (int page) {
+                                setState(() {
+                                  _currentPage2 = page;
+                                });
+                              },
+                              children: <Widget>[
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                                matches(),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: height / 50,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: _buildPageIndicator2(),
+                          ),
+                          SizedBox(
+                            height: height / 30,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              // Navigator.push(
+                              //   context,
+                              //   MaterialPageRoute(
+                              //     builder: (context) => const Upgrade(),
+                              //   ),
+                              // );
+                            },
+                            child: Container(
+                              height: height / 20,
+                              width: width / 2.5,
+                              decoration: BoxDecoration(
+                                color:
+                                    notifire.getlightingcolor.withOpacity(0.9),
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  CustomStrings.vip,
+                                  style: TextStyle(
+                                      color: notifire.getdarkspinkcolor,
+                                      fontSize: height / 60,
+                                      fontFamily: 'Gilroy Bold'),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: height / 40,
+                  ),
+                ]),
+              ),
             ),
           ),
 

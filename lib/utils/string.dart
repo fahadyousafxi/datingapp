@@ -172,7 +172,7 @@ class CustomStrings {
       'That’s awesome! Want to grab a few drinks this weekend?';
   static const String chat5 = 'That sounds great, I’d love to!';
   static const String matched = 'YOU MATCHED WITH CATIE ON 7/6/19';
-  static const String emails = 'email';
+  static const String emails = 'Email';
   static const String continues = 'Continue';
   static const String birthdate = 'BIRTHDATE';
   static const String birthhdates = 'Birthdate';
