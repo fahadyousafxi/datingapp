@@ -4,12 +4,19 @@ import 'media.dart';
 
 class Customtextfild2 {
   static Widget textField(
-      TextEditingController controller, name1, textcolor, se, clr) {
+    TextEditingController controller,
+    name1,
+    textcolor,
+    se,
+    clr, {
+    String? Function(String?)? validator,
+  }) {
     return Container(
       color: Colors.transparent,
       height: height / 16,
       width: width,
-      child: TextField(
+      child: TextFormField(
+        validator: validator,
         controller: controller,
         style: TextStyle(color: textcolor),
         decoration: InputDecoration(
