@@ -872,7 +872,7 @@ class _HomePageState extends State<HomePage> {
                                   width: 10,
                                 ),
                                 Text(
-                                  'Newyork, USA',
+                                  'Washington, USA',
                                   style: TextStyle(
                                       color: notifire.getlightcolor,
                                       fontSize: height / 60,

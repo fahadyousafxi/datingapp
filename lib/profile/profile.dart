@@ -238,7 +238,7 @@ class _ProfileState extends State<Profile> {
                                 "32 MILES",
                                 style: TextStyle(
                                     color:
-                                    notifire.getgreycolor.withOpacity(0.6),
+                                        notifire.getgreycolor.withOpacity(0.6),
                                     fontSize: height / 60,
                                     fontFamily: 'Gilroy Bold'),
                               ),
@@ -269,7 +269,7 @@ class _ProfileState extends State<Profile> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.symmetric(horizontal: width / 20),
+                                EdgeInsets.symmetric(horizontal: width / 20),
                             child: Text(
                               CustomStrings.eating,
                               style: TextStyle(
@@ -300,7 +300,7 @@ class _ProfileState extends State<Profile> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.symmetric(horizontal: width / 20),
+                                EdgeInsets.symmetric(horizontal: width / 20),
                             child: Row(
                               children: [
                                 Container(
@@ -398,20 +398,24 @@ class _ProfileState extends State<Profile> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: width / 30),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: width / 30),
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.spaceEvenly,
                                           children: [
                                             Padding(
                                               padding: EdgeInsets.symmetric(
                                                   vertical: width / 60),
                                               child: Image.asset(
                                                 interest[index],
-                                                color: notifire.getdarkspinkcolor,
+                                                color:
+                                                    notifire.getdarkspinkcolor,
                                               ),
                                             ),
-                                            SizedBox(width: width / 70,),
+                                            SizedBox(
+                                              width: width / 70,
+                                            ),
                                             Text(
                                               name[index],
                                               style: TextStyle(
@@ -427,6 +431,85 @@ class _ProfileState extends State<Profile> {
                                 ),
                               ),
                             ),
+                          ),
+                          SizedBox(
+                            height: height / 40,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: width / 20,
+                              ),
+                              Text(
+                                CustomStrings.interests,
+                                style: TextStyle(
+                                    color: notifire.getdarkscolor,
+                                    fontSize: height / 50,
+                                    fontFamily: 'Gilroy Bold'),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: height / 60,
+                          ),
+                          Container(
+                            height: height / 25,
+                            width: width,
+                            color: Colors.transparent,
+                            child: ListView.builder(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: interest.length,
+                              itemBuilder: (context, index) => Padding(
+                                padding: EdgeInsets.only(left: width / 20),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: height / 25,
+                                      decoration: BoxDecoration(
+                                        color: notifire.getpinkscolor
+                                            .withOpacity(0.4),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(20),
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: width / 30),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: width / 60),
+                                              child: Image.asset(
+                                                interest[index],
+                                                color:
+                                                    notifire.getdarkspinkcolor,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: width / 70,
+                                            ),
+                                            Text(
+                                              name[index],
+                                              style: TextStyle(
+                                                  color: notifire.getdarkscolor,
+                                                  fontSize: height / 50,
+                                                  fontFamily: 'Gilroy Bold'),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: height / 70,
                           ),
                         ],
                       ),

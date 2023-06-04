@@ -121,7 +121,10 @@ class _SearchScreenState extends State<SearchScreen> {
     CustomStrings.design,
     CustomStrings.music,
   ];
-  List interest = ["image/design.png", "image/photography.png"];
+  List interest = [
+    "image/design.png",
+    "image/photography.png",
+  ];
 
   // Initial Position
   static const CameraPosition _kGooglePlex =
@@ -157,314 +160,319 @@ class _SearchScreenState extends State<SearchScreen> {
       final Uint8List resizedImageMarker = byteData!.buffer.asUint8List();
       _marker.add(
         Marker(
-            markerId: MarkerId(i.toString()),
-            position: _latLang[i],
-            icon: BitmapDescriptor.fromBytes(resizedImageMarker),
-            onTap: () {
-              showModalBottomSheet<dynamic>(
-                // changes by Fahad
-                backgroundColor: notifire.getprimerycolor,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.0),
-                      topRight: Radius.circular(25.0)),
-                ),
-                isScrollControlled: true,
-                context: context,
-                builder: (BuildContext bc) {
-                  return StatefulBuilder(
-                    builder: (BuildContext context, StateSetter setState) {
-                      return Wrap(
-                        children: <Widget>[
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: height / 80,
-                              ),
-                              Center(
-                                child: Container(
-                                  height: height / 90,
-                                  width: width / 7,
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                    color:
-                                        notifire.getgreycolor.withOpacity(0.4),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                height: height / 2,
-                                width: width,
-                                decoration: const BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(35),
-                                    topRight: Radius.circular(35),
-                                  ),
-                                ),
-                                child: ListView.builder(
-                                  itemCount: 3,
-                                  itemBuilder: (context, index) => Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(15.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Column(
-                                              children: [
-                                                InkWell(
-                                                  onTap: () => Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              Profile())),
-                                                  child: Container(
-                                                    height: height / 5,
-                                                    width: width / 3,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      color: Colors.transparent,
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                        Radius.circular(22),
-                                                      ),
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          const BorderRadius
-                                                              .all(
-                                                        Radius.circular(22),
-                                                      ),
-                                                      child: Image.asset(
-                                                        'image/match6.png',
-                                                        width: width,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Expanded(
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 15.0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Row(
-                                                      children: [
-                                                        Column(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Text(
-                                                              CustomStrings
-                                                                  .jamyee,
-                                                              style: TextStyle(
-                                                                color: notifire
-                                                                    .getdarkscolor,
-                                                                fontSize:
-                                                                    height / 40,
-                                                                fontFamily:
-                                                                    'Gilroy Bold',
-                                                              ),
-                                                            ),
-                                                            SizedBox(
-                                                                height: height /
-                                                                    90),
-                                                            Row(
-                                                              children: [
-                                                                Image.asset(
-                                                                  "image/personal.png",
-                                                                  height:
-                                                                      height /
-                                                                          50,
-                                                                ),
-                                                                SizedBox(
-                                                                    width:
-                                                                        width /
-                                                                            50),
-                                                                Text(
-                                                                  CustomStrings
-                                                                      .personal,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: notifire
-                                                                        .getgreycolor,
-                                                                    fontSize:
-                                                                        height /
-                                                                            50,
-                                                                    fontFamily:
-                                                                        'Gilroy Bold',
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            SizedBox(
-                                                                height: height /
-                                                                    50),
-                                                            Row(
-                                                              children: [
-                                                                Image.asset(
-                                                                  "image/msg.png",
-                                                                  height:
-                                                                      height /
-                                                                          55,
-                                                                ),
-                                                                SizedBox(
-                                                                    width:
-                                                                        width /
-                                                                            50),
-                                                                Text(
-                                                                  "32 MILES",
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: notifire
-                                                                        .getgreycolor
-                                                                        .withOpacity(
-                                                                            0.6),
-                                                                    fontSize:
-                                                                        height /
-                                                                            55,
-                                                                    fontFamily:
-                                                                        'Gilroy Bold',
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                        height: height / 40),
-                                                    Row(
-                                                      children: [
-                                                        Text(
-                                                          CustomStrings
-                                                              .interests,
-                                                          style: TextStyle(
-                                                            color: notifire
-                                                                .getdarkscolor,
-                                                            fontSize:
-                                                                height / 55,
-                                                            fontFamily:
-                                                                'Gilroy Bold',
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    SizedBox(
-                                                        height: height / 60),
-                                                    Container(
-                                                      height: height / 15,
-                                                      width: width,
-                                                      color: Colors.transparent,
-                                                      child: ListView.builder(
-                                                        scrollDirection:
-                                                            Axis.horizontal,
-                                                        itemCount:
-                                                            interest.length,
-                                                        itemBuilder:
-                                                            (context, index) =>
-                                                                Column(
-                                                          children: [
-                                                            Container(
-                                                              height:
-                                                                  height / 30,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: notifire
-                                                                    .getpinkscolor
-                                                                    .withOpacity(
-                                                                        0.4),
-                                                                borderRadius:
-                                                                    const BorderRadius
-                                                                        .all(
-                                                                  Radius
-                                                                      .circular(
-                                                                          20),
-                                                                ),
-                                                              ),
-                                                              child: Padding(
-                                                                padding: EdgeInsets
-                                                                    .symmetric(
-                                                                        horizontal:
-                                                                            width /
-                                                                                30),
-                                                                child: Row(
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsets.symmetric(
-                                                                          vertical:
-                                                                              width / 50),
-                                                                      child: Image
-                                                                          .asset(
-                                                                        interest[
-                                                                            index],
-                                                                        color: notifire
-                                                                            .getdarkspinkcolor,
-                                                                      ),
-                                                                    ),
-                                                                    Text(
-                                                                      name[
-                                                                          index],
-                                                                      style:
-                                                                          TextStyle(
-                                                                        color: notifire
-                                                                            .getdarkscolor,
-                                                                        fontSize:
-                                                                            height /
-                                                                                70,
-                                                                        fontFamily:
-                                                                            'Gilroy',
-                                                                      ),
-                                                                    ),
-                                                                  ],
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: width * 0.9,
-                                        child: Divider(
-                                          color: notifire.getdarkpinkscolor,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              );
-              _latLang[i];
-            }),
+          markerId: MarkerId(i.toString()),
+          position: _latLang[i],
+          icon: BitmapDescriptor.fromBytes(resizedImageMarker),
+
+          /// Marker bottom sheet commented changes by fahad
+          // onTap: () {
+          //   showModalBottomSheet<dynamic>(
+          //     // changes by Fahad
+          //     backgroundColor: notifire.getprimerycolor,
+          //     shape: const RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.only(
+          //           topLeft: Radius.circular(25.0),
+          //           topRight: Radius.circular(25.0)),
+          //     ),
+          //     isScrollControlled: true,
+          //     context: context,
+          //     builder: (BuildContext bc) {
+          //       return StatefulBuilder(
+          //         builder: (BuildContext context, StateSetter setState) {
+          //           return Wrap(
+          //             children: <Widget>[
+          //               Column(
+          //                 children: [
+          //                   SizedBox(
+          //                     height: height / 80,
+          //                   ),
+          //                   Center(
+          //                     child: Container(
+          //                       height: height / 90,
+          //                       width: width / 7,
+          //                       decoration: BoxDecoration(
+          //                         borderRadius: const BorderRadius.all(
+          //                           Radius.circular(20),
+          //                         ),
+          //                         color:
+          //                             notifire.getgreycolor.withOpacity(0.4),
+          //                       ),
+          //                     ),
+          //                   ),
+          //
+          //                   /// the bottom sheet
+          //                   Container(
+          //                     height: height / 2,
+          //                     width: width,
+          //                     decoration: const BoxDecoration(
+          //                       borderRadius: BorderRadius.only(
+          //                         topLeft: Radius.circular(35),
+          //                         topRight: Radius.circular(35),
+          //                       ),
+          //                     ),
+          //                     child: ListView.builder(
+          //                       itemCount: 3,
+          //                       itemBuilder: (context, index) => Column(
+          //                         children: [
+          //                           Padding(
+          //                             padding: const EdgeInsets.all(15.0),
+          //                             child: Row(
+          //                               mainAxisAlignment:
+          //                                   MainAxisAlignment.start,
+          //                               crossAxisAlignment:
+          //                                   CrossAxisAlignment.start,
+          //                               children: [
+          //                                 Column(
+          //                                   children: [
+          //                                     InkWell(
+          //                                       onTap: () => Navigator.push(
+          //                                           context,
+          //                                           MaterialPageRoute(
+          //                                               builder: (context) =>
+          //                                                   Profile())),
+          //                                       child: Container(
+          //                                         height: height / 5,
+          //                                         width: width / 3,
+          //                                         decoration:
+          //                                             const BoxDecoration(
+          //                                           color: Colors.transparent,
+          //                                           borderRadius:
+          //                                               BorderRadius.all(
+          //                                             Radius.circular(22),
+          //                                           ),
+          //                                         ),
+          //                                         child: ClipRRect(
+          //                                           borderRadius:
+          //                                               const BorderRadius
+          //                                                   .all(
+          //                                             Radius.circular(22),
+          //                                           ),
+          //                                           child: Image.asset(
+          //                                             'image/match6.png',
+          //                                             width: width,
+          //                                             fit: BoxFit.cover,
+          //                                           ),
+          //                                         ),
+          //                                       ),
+          //                                     ),
+          //                                   ],
+          //                                 ),
+          //                                 Expanded(
+          //                                   child: Padding(
+          //                                     padding: const EdgeInsets.only(
+          //                                         left: 15.0),
+          //                                     child: Column(
+          //                                       mainAxisAlignment:
+          //                                           MainAxisAlignment.start,
+          //                                       crossAxisAlignment:
+          //                                           CrossAxisAlignment.start,
+          //                                       children: [
+          //                                         Row(
+          //                                           children: [
+          //                                             Column(
+          //                                               crossAxisAlignment:
+          //                                                   CrossAxisAlignment
+          //                                                       .start,
+          //                                               children: [
+          //                                                 Text(
+          //                                                   CustomStrings
+          //                                                       .jamyee,
+          //                                                   style: TextStyle(
+          //                                                     color: notifire
+          //                                                         .getdarkscolor,
+          //                                                     fontSize:
+          //                                                         height / 40,
+          //                                                     fontFamily:
+          //                                                         'Gilroy Bold',
+          //                                                   ),
+          //                                                 ),
+          //                                                 SizedBox(
+          //                                                     height: height /
+          //                                                         90),
+          //                                                 Row(
+          //                                                   children: [
+          //                                                     Image.asset(
+          //                                                       "image/personal.png",
+          //                                                       height:
+          //                                                           height /
+          //                                                               50,
+          //                                                     ),
+          //                                                     SizedBox(
+          //                                                         width:
+          //                                                             width /
+          //                                                                 50),
+          //                                                     Text(
+          //                                                       CustomStrings
+          //                                                           .personal,
+          //                                                       style:
+          //                                                           TextStyle(
+          //                                                         color: notifire
+          //                                                             .getgreycolor,
+          //                                                         fontSize:
+          //                                                             height /
+          //                                                                 50,
+          //                                                         fontFamily:
+          //                                                             'Gilroy Bold',
+          //                                                       ),
+          //                                                     ),
+          //                                                   ],
+          //                                                 ),
+          //                                                 SizedBox(
+          //                                                     height: height /
+          //                                                         50),
+          //                                                 Row(
+          //                                                   children: [
+          //                                                     Image.asset(
+          //                                                       "image/msg.png",
+          //                                                       height:
+          //                                                           height /
+          //                                                               55,
+          //                                                     ),
+          //                                                     SizedBox(
+          //                                                         width:
+          //                                                             width /
+          //                                                                 50),
+          //                                                     Text(
+          //                                                       "32 MILES",
+          //                                                       style:
+          //                                                           TextStyle(
+          //                                                         color: notifire
+          //                                                             .getgreycolor
+          //                                                             .withOpacity(
+          //                                                                 0.6),
+          //                                                         fontSize:
+          //                                                             height /
+          //                                                                 55,
+          //                                                         fontFamily:
+          //                                                             'Gilroy Bold',
+          //                                                       ),
+          //                                                     ),
+          //                                                   ],
+          //                                                 ),
+          //                                               ],
+          //                                             ),
+          //                                           ],
+          //                                         ),
+          //                                         SizedBox(
+          //                                             height: height / 40),
+          //                                         Row(
+          //                                           children: [
+          //                                             Text(
+          //                                               CustomStrings
+          //                                                   .interests,
+          //                                               style: TextStyle(
+          //                                                 color: notifire
+          //                                                     .getdarkscolor,
+          //                                                 fontSize:
+          //                                                     height / 55,
+          //                                                 fontFamily:
+          //                                                     'Gilroy Bold',
+          //                                               ),
+          //                                             ),
+          //                                           ],
+          //                                         ),
+          //                                         SizedBox(
+          //                                             height: height / 60),
+          //                                         Container(
+          //                                           height: height / 15,
+          //                                           width: width,
+          //                                           color: Colors.transparent,
+          //                                           child: ListView.builder(
+          //                                             scrollDirection:
+          //                                                 Axis.horizontal,
+          //                                             itemCount:
+          //                                                 interest.length,
+          //                                             itemBuilder:
+          //                                                 (context, index) =>
+          //                                                     Column(
+          //                                               children: [
+          //                                                 Container(
+          //                                                   height:
+          //                                                       height / 30,
+          //                                                   decoration:
+          //                                                       BoxDecoration(
+          //                                                     color: notifire
+          //                                                         .getpinkscolor
+          //                                                         .withOpacity(
+          //                                                             0.4),
+          //                                                     borderRadius:
+          //                                                         const BorderRadius
+          //                                                             .all(
+          //                                                       Radius
+          //                                                           .circular(
+          //                                                               20),
+          //                                                     ),
+          //                                                   ),
+          //                                                   child: Padding(
+          //                                                     padding: EdgeInsets
+          //                                                         .symmetric(
+          //                                                             horizontal:
+          //                                                                 width /
+          //                                                                     30),
+          //                                                     child: Row(
+          //                                                       children: [
+          //                                                         Padding(
+          //                                                           padding: EdgeInsets.symmetric(
+          //                                                               vertical:
+          //                                                                   width / 50),
+          //                                                           child: Image
+          //                                                               .asset(
+          //                                                             interest[
+          //                                                                 index],
+          //                                                             color: notifire
+          //                                                                 .getdarkspinkcolor,
+          //                                                           ),
+          //                                                         ),
+          //                                                         Text(
+          //                                                           name[
+          //                                                               index],
+          //                                                           style:
+          //                                                               TextStyle(
+          //                                                             color: notifire
+          //                                                                 .getdarkscolor,
+          //                                                             fontSize:
+          //                                                                 height /
+          //                                                                     70,
+          //                                                             fontFamily:
+          //                                                                 'Gilroy',
+          //                                                           ),
+          //                                                         ),
+          //                                                       ],
+          //                                                     ),
+          //                                                   ),
+          //                                                 ),
+          //                                               ],
+          //                                             ),
+          //                                           ),
+          //                                         ),
+          //                                       ],
+          //                                     ),
+          //                                   ),
+          //                                 ),
+          //                               ],
+          //                             ),
+          //                           ),
+          //                           SizedBox(
+          //                             width: width * 0.9,
+          //                             child: Divider(
+          //                               color: notifire.getdarkpinkscolor,
+          //                             ),
+          //                           )
+          //                         ],
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ],
+          //               ),
+          //             ],
+          //           );
+          //         },
+          //       );
+          //     },
+          //   );
+          //   _latLang[i];
+          // }
+        ),
       );
       setState(() {});
     }
@@ -541,7 +549,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 0.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: 0.0, vertical: width / 30),
                     child: Row(
                       children: [
                         Expanded(
@@ -1147,26 +1156,336 @@ class _SearchScreenState extends State<SearchScreen> {
             Expanded(
               child: Stack(
                 children: [
-                  GoogleMap(
-                    mapType: MapType.normal,
-                    initialCameraPosition: _kGooglePlex,
-                    markers: Set<Marker>.of(_marker),
-                    onTap: (position) {
-                      _customInfoWindowController.hideInfoWindow!();
-                    },
-                    onCameraMove: (position) {
-                      _customInfoWindowController.onCameraMove!();
-                    },
-                    onMapCreated: (GoogleMapController controller) {
-                      controller.setMapStyle(maptheme);
-                      _controller.complete(controller);
-                      _customInfoWindowController.googleMapController =
-                          controller;
-                    },
+                  Container(
+                    height: height / 2.7,
+                    child: GoogleMap(
+                      padding: EdgeInsets.only(bottom: 22),
+                      mapType: MapType.normal,
+                      initialCameraPosition: _kGooglePlex,
+                      markers: Set<Marker>.of(_marker),
+                      onTap: (position) {
+                        _customInfoWindowController.hideInfoWindow!();
+                      },
+                      onCameraMove: (position) {
+                        _customInfoWindowController.onCameraMove!();
+                      },
+                      onMapCreated: (GoogleMapController controller) {
+                        controller.setMapStyle(maptheme);
+                        _controller.complete(controller);
+                        _customInfoWindowController.googleMapController =
+                            controller;
+                      },
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: notifire.getprimerycolor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(25.0),
+                          topRight: Radius.circular(25.0),
+                        ),
+                      ),
+                      child: Wrap(
+                        children: <Widget>[
+                          Column(
+                            children: [
+                              SizedBox(
+                                height: height / 80,
+                              ),
+                              Center(
+                                child: Container(
+                                  height: height / 90,
+                                  width: width / 7,
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
+                                    color:
+                                        notifire.getgreycolor.withOpacity(0.4),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                height: height / 2.3,
+                                width: width,
+                                decoration: const BoxDecoration(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(35),
+                                    topRight: Radius.circular(35),
+                                  ),
+                                ),
+                                child: ListView.builder(
+                                  itemCount: 3,
+                                  itemBuilder: (context, index) => Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(15.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              children: [
+                                                InkWell(
+                                                  onTap: () => Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              Profile())),
+                                                  child: Container(
+                                                    height: height / 5,
+                                                    width: width / 3,
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: Colors.transparent,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(22),
+                                                      ),
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                              .all(
+                                                        Radius.circular(22),
+                                                      ),
+                                                      child: Image.asset(
+                                                        'image/match6.png',
+                                                        width: width,
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 15.0),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Row(
+                                                      children: [
+                                                        Column(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                              CustomStrings
+                                                                  .jamyee,
+                                                              style: TextStyle(
+                                                                color: notifire
+                                                                    .getdarkscolor,
+                                                                fontSize:
+                                                                    height / 40,
+                                                                fontFamily:
+                                                                    'Gilroy Bold',
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                                height: height /
+                                                                    90),
+                                                            Row(
+                                                              children: [
+                                                                Image.asset(
+                                                                  "image/personal.png",
+                                                                  height:
+                                                                      height /
+                                                                          50,
+                                                                ),
+                                                                SizedBox(
+                                                                    width:
+                                                                        width /
+                                                                            40),
+                                                                Text(
+                                                                  CustomStrings
+                                                                      .personal,
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: notifire
+                                                                        .getgreycolor,
+                                                                    fontSize:
+                                                                        height /
+                                                                            50,
+                                                                    fontFamily:
+                                                                        'Gilroy Bold',
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                            SizedBox(
+                                                                height: height /
+                                                                    90),
+                                                            Row(
+                                                              children: [
+                                                                Image.asset(
+                                                                  "image/msg.png",
+                                                                  height:
+                                                                      height /
+                                                                          55,
+                                                                ),
+                                                                SizedBox(
+                                                                    width:
+                                                                        width /
+                                                                            40),
+                                                                Text(
+                                                                  "32 MILES",
+                                                                  style:
+                                                                      TextStyle(
+                                                                    color: notifire
+                                                                        .getgreycolor
+                                                                        .withOpacity(
+                                                                            0.6),
+                                                                    fontSize:
+                                                                        height /
+                                                                            50,
+                                                                    fontFamily:
+                                                                        'Gilroy Bold',
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                        height: height / 60),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          CustomStrings
+                                                              .interests,
+                                                          style: TextStyle(
+                                                            color: notifire
+                                                                .getdarkscolor,
+                                                            fontSize:
+                                                                height / 50,
+                                                            fontFamily:
+                                                                'Gilroy Bold',
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    SizedBox(
+                                                        height: height / 60),
+                                                    Container(
+                                                      height: height / 15,
+                                                      width: width,
+                                                      color: Colors.transparent,
+                                                      child: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        itemCount:
+                                                            interest.length,
+                                                        itemBuilder:
+                                                            (context, index) =>
+                                                                Column(
+                                                          children: [
+                                                            Container(
+                                                              margin: EdgeInsets
+                                                                  .only(
+                                                                      right:
+                                                                          10),
+                                                              height:
+                                                                  height / 30,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: notifire
+                                                                    .getpinkscolor
+                                                                    .withOpacity(
+                                                                        0.4),
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          20),
+                                                                ),
+                                                              ),
+                                                              child: Padding(
+                                                                padding: EdgeInsets
+                                                                    .symmetric(
+                                                                        horizontal:
+                                                                            width /
+                                                                                30),
+                                                                child: Row(
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          vertical:
+                                                                              width / 70),
+                                                                      child: Image
+                                                                          .asset(
+                                                                        interest[
+                                                                            index],
+                                                                        color: notifire
+                                                                            .getdarkspinkcolor,
+                                                                      ),
+                                                                    ),
+                                                                    SizedBox(
+                                                                      width: 3,
+                                                                    ),
+                                                                    Text(
+                                                                      name[
+                                                                          index],
+                                                                      style:
+                                                                          TextStyle(
+                                                                        color: notifire
+                                                                            .getdarkscolor,
+                                                                        fontSize:
+                                                                            height /
+                                                                                70,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        fontFamily:
+                                                                            'Gilroy',
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.9,
+                                        child: Divider(
+                                          color: notifire.getdarkpinkscolor,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
