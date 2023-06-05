@@ -144,6 +144,7 @@ class CustomStrings {
   static const String few = 'Select a few of your interests to match with';
   static const String users = 'users who have similar things in common.';
   static const String interests = 'Interests';
+  static const String review = 'Reviews';
   static const String names = 'Name';
   static const String datings = 'Dating';
   static const String makefriends = 'Make Friends';
