@@ -44,19 +44,35 @@ class _AllReviewState extends State<AllReview> {
           itemBuilder: (BuildContext context, int index) {
             // var data = sellerProvider.getSellerReviewsDataList[index];
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 index == 0
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            CustomStrings.review,
-                            style: TextStyle(
-                                color: notifire.getdarkscolor,
-                                fontSize: height / 50,
-                                fontFamily: 'Gilroy Bold'),
+                          Row(
+                            children: [
+                              Text(
+                                'All ' + CustomStrings.review,
+                                style: TextStyle(
+                                    color: notifire.getdarkscolor,
+                                    fontSize: height / 40,
+                                    fontFamily: 'Gilroy Bold'),
+                              ),
+                            ],
                           ),
+                          SizedBox(
+                            height: height / 200,
+                          ),
+                          Text(
+                            '(4.7)',
+                            style: TextStyle(
+                                color: notifire.getgreycolor,
+                                fontSize: height / 65,
+                                fontFamily: 'Gilroy Medium'),
+                          ),
+                          SizedBox(
+                            height: height / 50,
+                          )
                         ],
                       )
                     : SizedBox(),
@@ -79,7 +95,7 @@ class _AllReviewState extends State<AllReview> {
                   ),
                 ),
                 SizedBox(
-                  height: height / 80,
+                  height: height / 50,
                 ),
                 index == 2 ? widget.childIndicator! : SizedBox(),
 
@@ -217,10 +233,10 @@ class _AllReviewState extends State<AllReview> {
               children: List.generate(
                   // data.reviewRating!,
                   5,
-                  (index) => const Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 20,
+                  (index) => Image.asset(
+                        'image/reviewStar.png',
+                        width: 21,
+                        height: 15,
                       )),
             ),
             Row(
@@ -308,10 +324,10 @@ class _AllReviewState extends State<AllReview> {
               children: List.generate(
                   // data.reviewRating!,
                   5,
-                  (index) => const Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 20,
+                  (index) => Image.asset(
+                        'image/reviewStar.png',
+                        width: 21,
+                        height: 15,
                       )),
             ),
             Row(

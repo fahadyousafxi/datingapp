@@ -68,4 +68,20 @@ class AuthRepository {
       throw e;
     }
   }
+
+  /// update password Api Call
+  Future<dynamic> socialLoginApi(dynamic data) async {
+    try {
+      dynamic response = await _apiServices.getPostApiResponse(
+          AppUrl.socialLoginEndPoint, data);
+      if (kDebugMode) {
+        print(
+            '*************************** ${AppUrl.socialLoginEndPoint} ************************');
+      }
+
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
 }

@@ -52,6 +52,10 @@ dependencies:
   custom_info_window: ^1.0.1
   http: ^0.13.6
 
+  google_sign_in: ^6.1.4
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

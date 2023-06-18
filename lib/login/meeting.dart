@@ -1,13 +1,17 @@
 import 'package:dating/login/accounts/account.dart';
-import 'package:dating/login/signIn.dart';
+import 'package:dating/login/accounts/signIn_with_phone.dart';
+import 'package:dating/login/signIn_with_email.dart';
 import 'package:dating/login/signup.dart';
+import 'package:dating/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../api/google_signin_api.dart';
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 import '../utils/string.dart';
+import '../view_model/auth_view_model.dart';
 
 class Meeting extends StatefulWidget {
   const Meeting({Key? key}) : super(key: key);
@@ -31,6 +35,7 @@ class _MeetingState extends State<Meeting> {
 
   @override
   Widget build(BuildContext context) {
+    final authViewModel = Provider.of<AuthViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -47,7 +52,7 @@ class _MeetingState extends State<Meeting> {
               ),
             ),
             SizedBox(
-              height: height / 13,
+              height: height / 200,
             ),
             Text(
               CustomStrings.meeting,
@@ -66,14 +71,14 @@ class _MeetingState extends State<Meeting> {
                   fontSize: height / 35),
             ),
             SizedBox(
-              height: height / 18,
+              height: height / 28,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const SignIn(),
+                    builder: (context) => const SignInWithEmail(),
                   ),
                 );
               },
@@ -115,21 +120,13 @@ class _MeetingState extends State<Meeting> {
               ),
             ),
             SizedBox(
-              height: height / 40,
+              height: height / 50,
             ),
             GestureDetector(
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => Account(
-                      name: '',
-                      email: '',
-                      birthDate: '',
-                      password: '',
-                      initialPage: 0,
-                    ),
-                  ),
+                  MaterialPageRoute(builder: (context) => SignInWithPhone()),
                 );
               },
               child: Container(
@@ -174,7 +171,83 @@ class _MeetingState extends State<Meeting> {
               ),
             ),
             SizedBox(
-              height: height / 40,
+              height: height / 50,
+            ),
+            GestureDetector(
+              onTap: () async {
+                final user = await GoogleSignInApi.login();
+                if (user != null) {
+                  Utils.flutterToast(
+                      'Name: ${user?.displayName} \n Email: ${user?.email} ');
+
+                  Map data = {
+                    'name': user?.displayName,
+                    'email': user?.email,
+                    'token': user?.id,
+                  };
+                  authViewModel.loginWithGoogle(context, data: data);
+                } else {
+                  Utils.flutterToast('Google Login Failed');
+                }
+
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => Account(
+                //       name: '',
+                //       email: '',
+                //       birthDate: '',
+                //       password: '',
+                //       initialPage: 0,
+                //     ),
+                //   ),
+                // );
+              },
+              child: Container(
+                height: height / 17,
+                width: width / 1.3,
+                decoration: BoxDecoration(
+                  color: notifire.getpinkscolor.withOpacity(0.4),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: width / 90,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      height: height / 17,
+                      width: width / 10,
+                      child: Padding(
+                        padding: EdgeInsets.all(height / 100),
+                        child: Image.asset(
+                          "image/google.png",
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: width / 8,
+                    ),
+                    Text(
+                      CustomStrings.loging,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                          fontFamily: 'Gilroy Bold',
+                          color: Colors.white,
+                          fontSize: height / 48),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(
+              height: height / 50,
             ),
             GestureDetector(
               onTap: () {
@@ -215,7 +288,7 @@ class _MeetingState extends State<Meeting> {
                       child: Padding(
                         padding: EdgeInsets.all(height / 100),
                         child: Image.asset(
-                          "image/google.png",
+                          "image/facebook.png",
                         ),
                       ),
                     ),
@@ -223,7 +296,7 @@ class _MeetingState extends State<Meeting> {
                       width: width / 8,
                     ),
                     Text(
-                      CustomStrings.loging,
+                      CustomStrings.loginWithFacebook,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontFamily: 'Gilroy Bold',

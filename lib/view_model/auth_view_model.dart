@@ -135,4 +135,28 @@ class AuthViewModel with ChangeNotifier {
       // Utils.flutterToast('***************    error    ****************');
     });
   }
+
+  /// login With Google Api Call
+  Future<void> loginWithGoogle(BuildContext context,
+      {required dynamic data}) async {
+    setLoading(true);
+    _myRepo.socialLoginApi(data).then((value) {
+      // code
+
+      setLoading(false);
+      debugPrint(value.toString());
+      // Utils.flutterToast(value['token'].toString());
+      Utils.flutterToast('Sign in successfully');
+      // userViewModel.saveUser(value['token'].toString());
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Bottom()));
+    }).onError((error, stackTrace) {
+      // onError code
+      setLoading(false);
+
+      debugPrint(error.toString());
+      Utils.flutterToast(error.toString());
+      // Utils.flutterToast('***************    error    ****************');
+    });
+  }
 }

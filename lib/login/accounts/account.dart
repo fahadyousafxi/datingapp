@@ -98,7 +98,7 @@ class _AccountState extends State<Account> {
                     child: Container(
                       color: notifire.getprimerycolor,
                       child: PageView(
-                        physics: const ClampingScrollPhysics(),
+                        // physics: const NeverScrollableScrollPhysics(),
                         controller:
                             PageController(initialPage: widget.initialPage!),
                         onPageChanged: (int page) {

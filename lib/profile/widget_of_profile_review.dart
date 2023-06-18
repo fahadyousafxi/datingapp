@@ -259,10 +259,10 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
               children: List.generate(
                   // data.reviewRating!,
                   5,
-                  (index) => const Icon(
-                        Icons.star,
-                        color: Colors.orange,
-                        size: 20,
+                  (index) => Image.asset(
+                        'image/reviewStar.png',
+                        width: 21,
+                        height: 15,
                       )),
             ),
             Row(

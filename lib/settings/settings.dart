@@ -1,4 +1,4 @@
-import 'package:dating/login/signup.dart';
+import 'package:dating/api/google_signin_api.dart';
 import 'package:dating/settings/editprofile.dart';
 import 'package:dating/settings/notification.dart';
 import 'package:dating/settings/security.dart';
@@ -8,6 +8,7 @@ import 'package:flutter_share/flutter_share.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../login/meeting.dart';
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 import '../utils/string.dart';
@@ -30,15 +31,15 @@ class _SettingsState extends State<Settings> {
       notifire.setIsDark = previusstate;
     }
   }
+
   Future<void> share() async {
     await FlutterShare.share(
         title: 'Example share',
         text: 'Example share text',
         linkUrl: 'https://flutter.dev/',
-        chooserTitle: 'Example Chooser Title'
-
-    );
+        chooserTitle: 'Example Chooser Title');
   }
+
   @override
   Widget build(BuildContext context) {
     notifire = Provider.of<ColorNotifire>(context, listen: true);
@@ -85,8 +86,13 @@ class _SettingsState extends State<Settings> {
                   ),
                   const Spacer(),
                   GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Editprofile(),),);
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Editprofile(),
+                        ),
+                      );
                     },
                     child: Container(
                       height: height / 19,
@@ -112,14 +118,23 @@ class _SettingsState extends State<Settings> {
               height: height / 30,
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Editprofile(),),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Editprofile(),
+                  ),
+                );
               },
-              child: profiles("image/person.png",CustomStrings.editprofile,Icon(
-                Icons.arrow_forward_ios,
-                color: notifire.getdarkpinkscolor,
-                size: 20,
-              ),),
+              child: profiles(
+                "image/person.png",
+                CustomStrings.editprofile,
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: notifire.getdarkpinkscolor,
+                  size: 20,
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
@@ -129,14 +144,23 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const Notifications(),),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Notifications(),
+                  ),
+                );
               },
-              child: profiles("image/notifications.png",CustomStrings.notification,Icon(
-                Icons.arrow_forward_ios,
-                color: notifire.getdarkpinkscolor,
-                size: 20,
-              ),),
+              child: profiles(
+                "image/notifications.png",
+                CustomStrings.notification,
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: notifire.getdarkpinkscolor,
+                  size: 20,
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
@@ -146,14 +170,25 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) =>   const Security( CustomStrings.security,),),);
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Security(
+                      CustomStrings.security,
+                    ),
+                  ),
+                );
               },
-              child: profiles("image/lock.png",CustomStrings.security,Icon(
-                Icons.arrow_forward_ios,
-                color: notifire.getdarkpinkscolor,
-                size: 20,
-              ),),
+              child: profiles(
+                "image/lock.png",
+                CustomStrings.security,
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: notifire.getdarkpinkscolor,
+                  size: 20,
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
@@ -162,23 +197,27 @@ class _SettingsState extends State<Settings> {
                 thickness: 0.6,
               ),
             ),
-            profiles("image/mode.png",CustomStrings.darkmode,Transform.scale(
-              scale: 0.7,
-              child: CupertinoSwitch(trackColor: notifire.getgreycolor,
-                thumbColor:
-                Colors.white,
-                activeColor: notifire.getpinkscolor,
-                value: notifire.getIsDark,
-                onChanged: (val) async {
-                  final prefs =
-                  await SharedPreferences.getInstance();
-                  setState(() {
-                    notifire.setIsDark = val;
-                    prefs.setBool("setIsDark", val);
-                  });
-                },
+            profiles(
+              "image/mode.png",
+              CustomStrings.darkmode,
+              Transform.scale(
+                scale: 0.7,
+                child: CupertinoSwitch(
+                  trackColor: notifire.getgreycolor,
+                  thumbColor: Colors.white,
+                  activeColor: notifire.getpinkscolor,
+                  value: notifire.getIsDark,
+                  onChanged: (val) async {
+                    final prefs = await SharedPreferences.getInstance();
+                    setState(() {
+                      notifire.setIsDark = val;
+                      prefs.setBool("setIsDark", val);
+                    });
+                  },
+                ),
               ),
-            ),), Padding(
+            ),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Divider(
                 color: notifire.getgreycolor.withOpacity(0.4),
@@ -186,15 +225,20 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             GestureDetector(
-              onTap: (){
+              onTap: () {
                 share();
               },
-              child: profiles("image/invitepeople.png",CustomStrings.invitefriends,Icon(
-                Icons.arrow_forward_ios,
-                color: notifire.getdarkpinkscolor,
-                size: 20,
-              ),),
-            ), Padding(
+              child: profiles(
+                "image/invitepeople.png",
+                CustomStrings.invitefriends,
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: notifire.getdarkpinkscolor,
+                  size: 20,
+                ),
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Divider(
                 color: notifire.getgreycolor.withOpacity(0.4),
@@ -202,14 +246,24 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             GestureDetector(
-              onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const SignUp(),),);
+              onTap: () async {
+                await GoogleSignInApi.logOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Meeting(),
+                  ),
+                );
               },
-              child: profiles("image/logout.png",CustomStrings.logout,Icon(
-                Icons.arrow_forward_ios,
-                color: notifire.getprimerycolor,
-                size: 20,
-              ),),
+              child: profiles(
+                "image/logout.png",
+                CustomStrings.logout,
+                Icon(
+                  Icons.arrow_forward_ios,
+                  color: notifire.getprimerycolor,
+                  size: 20,
+                ),
+              ),
             ),
           ],
         ),
@@ -217,7 +271,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget profiles(img,name,se) {
+  Widget profiles(img, name, se) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width / 18),
       child: Container(

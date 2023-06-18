@@ -22,8 +22,204 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  String seconddropdownvalue = 'Germany';
-  var seconditems = ['Germany', 'Canada', 'U.K', 'India'];
+  String seconddropdownvalue = 'United Kingdom';
+  var seconditems = [
+    'Afghanistan',
+    'Albania',
+    'Algeria',
+    'Andorra',
+    'Angola',
+    'Antigua and Barbuda',
+    'Argentina',
+    'Armenia',
+    'Australia',
+    'Austria',
+    'Azerbaijan',
+    'Bahrain',
+    'Bangladesh',
+    'Barbados',
+    'Belarus',
+    'Belgium',
+    'Belize',
+    'Benin',
+    'Bhutan',
+    'Bolivia',
+    'Bosnia and Herzegovina',
+    'Botswana',
+    'Brazil',
+    'Brunei',
+    'Bulgaria',
+    'Burkina Faso',
+    'Burundi',
+    'Cambodia',
+    'Cameroon',
+    'Canada',
+    'Cape Verde',
+    'Central African Republic',
+    'Chad',
+    'Chile',
+    'China',
+    'Colombia',
+    'Comoros',
+    'Congo',
+    'Congo (Democratic Republic)',
+    'Costa Rica',
+    'Croatia',
+    'Cuba',
+    'Cyprus',
+    'Czechia',
+    'Denmark',
+    'Djibouti',
+    'Dominica',
+    'Dominican Republic',
+    'East Timor',
+    'Ecuador',
+    'Egypt',
+    'El Salvador',
+    'Equatorial Guinea',
+    'Eritrea',
+    'Estonia',
+    'Eswatini',
+    'Ethiopia',
+    'Fiji',
+    'Finland',
+    'France',
+    'Gabon',
+    'Georgia',
+    'Germany',
+    'Ghana',
+    'Greece',
+    'Grenada',
+    'Guatemala',
+    'Guinea',
+    'Guinea-Bissau',
+    'Guyana',
+    'Haiti',
+    'Honduras',
+    'Hungary',
+    'Iceland',
+    'India',
+    'Indonesia',
+    'Iran',
+    'Iraq',
+    'Ireland',
+    'Israel',
+    'Italy',
+    'Ivory Coast',
+    'Jamaica',
+    'Japan',
+    'Jordan',
+    'Kazakhstan',
+    'Kenya',
+    'Kiribati',
+    'Kosovo',
+    'Kuwait',
+    'Kyrgyzstan',
+    'Laos',
+    'Latvia',
+    'Lebanon',
+    'Lesotho',
+    'Liberia',
+    'Libya',
+    'Liechtenstein',
+    'Lithuania',
+    'Luxembourg',
+    'Madagascar',
+    'Malawi',
+    'Malaysia',
+    'Maldives',
+    'Mali',
+    'Malta',
+    'Marshall Islands',
+    'Mauritania',
+    'Mauritius',
+    'Mexico',
+    'Micronesia',
+    'Moldova',
+    'Monaco',
+    'Mongolia',
+    'Montenegro',
+    'Morocco',
+    'Mozambique',
+    'Myanmar (Burma)',
+    'Namibia',
+    'Nauru',
+    'Nepal',
+    'Netherlands',
+    'New Zealand',
+    'Nicaragua',
+    'Niger',
+    'Nigeria',
+    'North Korea',
+    'North Macedonia',
+    'Norway',
+    'Oman',
+    'Pakistan',
+    'Palau',
+    'Panama',
+    'Papua New Guinea',
+    'Paraguay',
+    'Peru',
+    'Philippines',
+    'Poland',
+    'Portugal',
+    'Qatar',
+    'Romania',
+    'Russia',
+    'Rwanda',
+    'Samoa',
+    'San Marino',
+    'Sao Tome and Principe',
+    'Saudi Arabia',
+    'Senegal',
+    'Serbia',
+    'Seychelles',
+    'Sierra Leone',
+    'Singapore',
+    'Slovakia',
+    'Slovenia',
+    'Solomon Islands',
+    'Somalia',
+    'South Africa',
+    'South Korea',
+    'South Sudan',
+    'Spain',
+    'Sri Lanka',
+    'St Kitts and Nevis',
+    'St Lucia',
+    'St Vincent',
+    'Sudan',
+    'Suriname',
+    'Sweden',
+    'Switzerland',
+    'Syria',
+    'Tajikistan',
+    'Tanzania',
+    'Thailand',
+    'The Bahamas',
+    'The Gambia',
+    'Togo',
+    'Tonga',
+    'Trinidad and Tobago',
+    'Tunisia',
+    'Turkey',
+    'Turkmenistan',
+    'Tuvalu',
+    'Uganda',
+    'Ukraine',
+    'United Arab Emirates',
+    'United Kingdom',
+    'United States',
+    'Uruguay',
+    'Uzbekistan',
+    'Vanuatu',
+    'Vatican City',
+    'Venezuela',
+    'Vietnam',
+    'Yemen',
+    'Zambia',
+    'Zimbabwe',
+  ];
   bool _switchValue = false;
   double _currentSliderValue = 10;
   RangeValues _currentRangeValues = const RangeValues(20, 25);
@@ -118,12 +314,12 @@ class _SearchScreenState extends State<SearchScreen> {
   ];
 
   List name = [
-    CustomStrings.design,
-    CustomStrings.music,
+    CustomStrings.fitness,
+    CustomStrings.cooking,
   ];
   List interest = [
-    "image/design.png",
-    "image/photography.png",
+    "image/fitness.png",
+    "image/cooking.png",
   ];
 
   // Initial Position
@@ -622,6 +818,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     return Wrap(
                                       children: <Widget>[
                                         Container(
+                                          height: height / 1.7,
                                           decoration: BoxDecoration(
                                             color: notifire.getprimerycolor,
                                             borderRadius:
@@ -630,47 +827,227 @@ class _SearchScreenState extends State<SearchScreen> {
                                               topRight: Radius.circular(25.0),
                                             ),
                                           ),
-                                          height: height / 1.4,
-                                          child: Column(
-                                            children: [
-                                              SizedBox(
-                                                height: height / 80,
-                                              ),
-                                              Center(
-                                                child: Container(
-                                                  height: height / 90,
-                                                  width: width / 7,
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        const BorderRadius.all(
-                                                      Radius.circular(20),
+                                          child: SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: height / 80,
+                                                ),
+                                                Center(
+                                                  child: Container(
+                                                    height: height / 90,
+                                                    width: width / 7,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          const BorderRadius
+                                                              .all(
+                                                        Radius.circular(20),
+                                                      ),
+                                                      color: notifire
+                                                          .getgreycolor
+                                                          .withOpacity(0.4),
                                                     ),
-                                                    color: notifire.getgreycolor
-                                                        .withOpacity(0.4),
                                                   ),
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 80,
-                                              ),
-                                              Text(
-                                                CustomStrings.filters,
-                                                style: TextStyle(
-                                                    color:
-                                                        notifire.getdarkscolor,
-                                                    fontSize: height / 40,
-                                                    fontFamily: 'Gilroy Bold'),
-                                              ),
-                                              SizedBox(
-                                                height: height / 80,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Row(
+                                                SizedBox(
+                                                  height: height / 80,
+                                                ),
+                                                Text(
+                                                  CustomStrings.filters,
+                                                  style: TextStyle(
+                                                      color: notifire
+                                                          .getdarkscolor,
+                                                      fontSize: height / 40,
+                                                      fontFamily:
+                                                          'Gilroy Bold'),
+                                                ),
+                                                SizedBox(
+                                                  height: height / 80,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Row(
+                                                    children: [
+                                                      Text(
+                                                        CustomStrings.location,
+                                                        style: TextStyle(
+                                                            color: notifire
+                                                                .getdarkscolor,
+                                                            fontSize:
+                                                                height / 50,
+                                                            fontFamily:
+                                                                'Gilroy Bold'),
+                                                      ),
+                                                      const Spacer(),
+                                                      Center(
+                                                        child: DropdownButton(
+                                                          underline:
+                                                              const SizedBox(),
+                                                          value:
+                                                              seconddropdownvalue,
+                                                          icon: Row(
+                                                            children: [
+                                                              SizedBox(
+                                                                  width: width /
+                                                                      200),
+                                                              Icon(
+                                                                Icons
+                                                                    .keyboard_arrow_down,
+                                                                size:
+                                                                    height / 40,
+                                                                color: notifire
+                                                                    .getgreycolor,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          items: seconditems
+                                                              .map((String
+                                                                  seconditems) {
+                                                            return DropdownMenuItem(
+                                                              value:
+                                                                  seconditems,
+                                                              child: Text(
+                                                                seconditems,
+                                                                style: TextStyle(
+                                                                    color: notifire
+                                                                        .getgreycolor,
+                                                                    fontSize:
+                                                                        13,
+                                                                    fontFamily:
+                                                                        'Gilroy Medium'),
+                                                              ),
+                                                            );
+                                                          }).toList(),
+                                                          onChanged: (String?
+                                                              newValue) {
+                                                            setState(() {
+                                                              seconddropdownvalue =
+                                                                  newValue!;
+                                                            });
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Divider(
+                                                    color: notifire
+                                                        .getpinkscolor
+                                                        .withOpacity(0.4),
+                                                    thickness: 1,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: height / 100,
+                                                ),
+                                                // Row(
+                                                //   children: [
+                                                //     SizedBox(
+                                                //       width: width / 20,
+                                                //     ),
+                                                //     Text(
+                                                //       CustomStrings.preferences,
+                                                //       style: TextStyle(
+                                                //           color: notifire
+                                                //               .getdarkscolor,
+                                                //           fontSize: height / 50,
+                                                //           fontFamily:
+                                                //               'Gilroy Bold'),
+                                                //     ),
+                                                //   ],
+                                                // ),
+                                                // Padding(
+                                                //   padding: EdgeInsets.only(
+                                                //       left: width / 40),
+                                                //   child: Row(
+                                                //     children: List.generate(
+                                                //       checkListItems.length,
+                                                //       (index) => Container(
+                                                //         color: Colors.transparent,
+                                                //         width: width / 2.5,
+                                                //         child: CheckboxListTile(
+                                                //           shape:
+                                                //               RoundedRectangleBorder(
+                                                //             borderRadius:
+                                                //                 BorderRadius
+                                                //                     .circular(5),
+                                                //           ),
+                                                //           side:
+                                                //               MaterialStateBorderSide
+                                                //                   .resolveWith(
+                                                //             (states) => BorderSide(
+                                                //                 width: 1.0,
+                                                //                 color: notifire
+                                                //                     .getgreycolor),
+                                                //           ),
+                                                //           checkColor:
+                                                //               Colors.white,
+                                                //           activeColor: notifire
+                                                //               .getdarkpinkscolor,
+                                                //           controlAffinity:
+                                                //               ListTileControlAffinity
+                                                //                   .leading,
+                                                //           contentPadding:
+                                                //               EdgeInsets.zero,
+                                                //           title: Text(
+                                                //             checkListItems[index]
+                                                //                 ["title"],
+                                                //             style: TextStyle(
+                                                //                 color: notifire
+                                                //                     .getgreycolor,
+                                                //                 fontSize:
+                                                //                     height / 60,
+                                                //                 fontFamily:
+                                                //                     'Gilroy Medium'),
+                                                //           ),
+                                                //           value: checkListItems[
+                                                //               index]["value"],
+                                                //           onChanged: (value) {
+                                                //             setState(
+                                                //               () {
+                                                //                 for (var element
+                                                //                     in checkListItems) {
+                                                //                   element["value"] =
+                                                //                       false;
+                                                //                 }
+                                                //                 checkListItems[
+                                                //                             index]
+                                                //                         [
+                                                //                         "value"] =
+                                                //                     value;
+                                                //                 selected =
+                                                //                     "${checkListItems[index]["id"]}, ${checkListItems[index]["title"]}, ${checkListItems[index]["value"]}";
+                                                //               },
+                                                //             );
+                                                //           },
+                                                //         ),
+                                                //       ),
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                                // Padding(
+                                                //   padding: EdgeInsets.symmetric(
+                                                //       horizontal: width / 20),
+                                                //   child: Divider(
+                                                //     color: notifire.getpinkscolor
+                                                //         .withOpacity(0.4),
+                                                //     thickness: 1,
+                                                //   ),
+                                                // ),
+                                                // SizedBox(
+                                                //   height: height / 100,
+                                                // ),
+                                                Row(
                                                   children: [
+                                                    SizedBox(
+                                                      width: width / 20,
+                                                    ),
                                                     Text(
-                                                      CustomStrings.location,
+                                                      CustomStrings.distance,
                                                       style: TextStyle(
                                                           color: notifire
                                                               .getdarkscolor,
@@ -679,404 +1056,208 @@ class _SearchScreenState extends State<SearchScreen> {
                                                               'Gilroy Bold'),
                                                     ),
                                                     const Spacer(),
-                                                    Center(
-                                                      child: DropdownButton(
-                                                        underline:
-                                                            const SizedBox(),
-                                                        value:
-                                                            seconddropdownvalue,
-                                                        icon: Row(
-                                                          children: [
-                                                            SizedBox(
-                                                                width: width /
-                                                                    200),
-                                                            Icon(
-                                                              Icons
-                                                                  .keyboard_arrow_down,
-                                                              size: height / 40,
-                                                              color: notifire
-                                                                  .getgreycolor,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                        items: seconditems.map(
-                                                            (String
-                                                                seconditems) {
-                                                          return DropdownMenuItem(
-                                                            value: seconditems,
-                                                            child: Text(
-                                                              seconditems,
-                                                              style: TextStyle(
-                                                                  color: notifire
-                                                                      .getgreycolor,
-                                                                  fontSize: 13,
-                                                                  fontFamily:
-                                                                      'Gilroy Medium'),
-                                                            ),
-                                                          );
-                                                        }).toList(),
-                                                        onChanged:
-                                                            (String? newValue) {
-                                                          setState(() {
-                                                            seconddropdownvalue =
-                                                                newValue!;
-                                                          });
-                                                        },
-                                                      ),
+                                                    Text(
+                                                      "${_currentSliderValue.round().toString()} Kg",
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkpinkscolor,
+                                                          fontSize: height / 60,
+                                                          fontFamily:
+                                                              'Gilroy Bold'),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width / 20,
                                                     ),
                                                   ],
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Divider(
-                                                  color: notifire.getpinkscolor
+                                                Slider(
+                                                  value: _currentSliderValue,
+                                                  max: 100,
+                                                  activeColor: notifire
+                                                      .getdarkpinkscolor,
+                                                  inactiveColor: notifire
+                                                      .getpinkscolor
                                                       .withOpacity(0.4),
-                                                  thickness: 1,
+                                                  //divisions: 5,
+                                                  label: _currentSliderValue
+                                                      .round()
+                                                      .toString(),
+                                                  onChanged: (double value) {
+                                                    setState(() {
+                                                      _currentSliderValue =
+                                                          value;
+                                                    });
+                                                  },
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 100,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width / 20,
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Divider(
+                                                    color: notifire
+                                                        .getpinkscolor
+                                                        .withOpacity(0.4),
+                                                    thickness: 1,
                                                   ),
-                                                  Text(
-                                                    CustomStrings.preferences,
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkscolor,
-                                                        fontSize: height / 50,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
+                                                ),
+                                                SizedBox(
+                                                  height: height / 100,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width / 20,
+                                                    ),
+                                                    Text(
+                                                      CustomStrings.age,
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkscolor,
+                                                          fontSize: height / 50,
+                                                          fontFamily:
+                                                              'Gilroy Bold'),
+                                                    ),
+                                                    const Spacer(),
+                                                    Text(
+                                                      _currentRangeValues.start
+                                                          .round()
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkpinkscolor,
+                                                          fontFamily:
+                                                              'Gilroy Bold'),
+                                                    ),
+                                                    Text(
+                                                      " : ",
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkpinkscolor),
+                                                    ),
+                                                    Text(
+                                                      _currentRangeValues.end
+                                                          .round()
+                                                          .toString(),
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkpinkscolor,
+                                                          fontFamily:
+                                                              'Gilroy Bold'),
+                                                    ),
+                                                    SizedBox(
+                                                      width: width / 20,
+                                                    ),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    RangeSlider(
+                                                      activeColor: notifire
+                                                          .getdarkpinkscolor,
+                                                      inactiveColor: notifire
+                                                          .getpinkscolor
+                                                          .withOpacity(0.4),
+                                                      values:
+                                                          _currentRangeValues,
+                                                      min: 0,
+                                                      //divisions: 20,
+                                                      max: 100,
+                                                      // labels: RangeLabels(
+                                                      //   _currentRangeValues.start
+                                                      //       .round()
+                                                      //       .toString(),
+                                                      //   _currentRangeValues.end
+                                                      //       .round()
+                                                      //       .toString(),
+                                                      // ),
+                                                      onChanged:
+                                                          (RangeValues values) {
+                                                        setState(() {
+                                                          _currentRangeValues =
+                                                              values;
+                                                        });
+                                                      },
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Divider(
+                                                    color: notifire
+                                                        .getpinkscolor
+                                                        .withOpacity(0.4),
+                                                    thickness: 1,
                                                   ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    left: width / 40),
-                                                child: Row(
-                                                  children: List.generate(
-                                                    checkListItems.length,
-                                                    (index) => Container(
-                                                      color: Colors.transparent,
-                                                      width: width / 2.5,
-                                                      child: CheckboxListTile(
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(5),
-                                                        ),
-                                                        side:
-                                                            MaterialStateBorderSide
-                                                                .resolveWith(
-                                                          (states) => BorderSide(
-                                                              width: 1.0,
-                                                              color: notifire
-                                                                  .getgreycolor),
-                                                        ),
-                                                        checkColor:
+                                                ),
+                                                SizedBox(
+                                                  height: height / 100,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    SizedBox(
+                                                      width: width / 20,
+                                                    ),
+                                                    Text(
+                                                      CustomStrings.onlinenow,
+                                                      style: TextStyle(
+                                                          color: notifire
+                                                              .getdarkscolor,
+                                                          fontSize: height / 50,
+                                                          fontFamily:
+                                                              'Gilroy Bold'),
+                                                    ),
+                                                    const Spacer(),
+                                                    Transform.scale(
+                                                      scale: 0.7,
+                                                      child: CupertinoSwitch(
+                                                        trackColor: notifire
+                                                            .getgreycolor,
+                                                        thumbColor:
                                                             Colors.white,
                                                         activeColor: notifire
-                                                            .getdarkpinkscolor,
-                                                        controlAffinity:
-                                                            ListTileControlAffinity
-                                                                .leading,
-                                                        contentPadding:
-                                                            EdgeInsets.zero,
-                                                        title: Text(
-                                                          checkListItems[index]
-                                                              ["title"],
-                                                          style: TextStyle(
-                                                              color: notifire
-                                                                  .getgreycolor,
-                                                              fontSize:
-                                                                  height / 60,
-                                                              fontFamily:
-                                                                  'Gilroy Medium'),
-                                                        ),
-                                                        value: checkListItems[
-                                                            index]["value"],
+                                                            .getpinkscolor,
+                                                        value: _switchValue,
                                                         onChanged: (value) {
                                                           setState(
                                                             () {
-                                                              for (var element
-                                                                  in checkListItems) {
-                                                                element["value"] =
-                                                                    false;
-                                                              }
-                                                              checkListItems[
-                                                                          index]
-                                                                      [
-                                                                      "value"] =
+                                                              _switchValue =
                                                                   value;
-                                                              selected =
-                                                                  "${checkListItems[index]["id"]}, ${checkListItems[index]["title"]}, ${checkListItems[index]["value"]}";
                                                             },
                                                           );
                                                         },
                                                       ),
                                                     ),
-                                                  ),
+                                                    SizedBox(
+                                                      width: width / 20,
+                                                    ),
+                                                  ],
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Divider(
-                                                  color: notifire.getpinkscolor
-                                                      .withOpacity(0.4),
-                                                  thickness: 1,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 100,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                  Text(
-                                                    CustomStrings.distance,
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkscolor,
-                                                        fontSize: height / 50,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  const Spacer(),
-                                                  Text(
-                                                    "${_currentSliderValue.round().toString()} Kg",
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkpinkscolor,
-                                                        fontSize: height / 60,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                ],
-                                              ),
-                                              Slider(
-                                                value: _currentSliderValue,
-                                                max: 100,
-                                                activeColor:
-                                                    notifire.getdarkpinkscolor,
-                                                inactiveColor: notifire
-                                                    .getpinkscolor
-                                                    .withOpacity(0.4),
-                                                //divisions: 5,
-                                                label: _currentSliderValue
-                                                    .round()
-                                                    .toString(),
-                                                onChanged: (double value) {
-                                                  setState(() {
-                                                    _currentSliderValue = value;
-                                                  });
-                                                },
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Divider(
-                                                  color: notifire.getpinkscolor
-                                                      .withOpacity(0.4),
-                                                  thickness: 1,
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 100,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                  Text(
-                                                    CustomStrings.age,
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkscolor,
-                                                        fontSize: height / 50,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  const Spacer(),
-                                                  Text(
-                                                    _currentRangeValues.start
-                                                        .round()
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkpinkscolor,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  Text(
-                                                    " : ",
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkpinkscolor),
-                                                  ),
-                                                  Text(
-                                                    _currentRangeValues.end
-                                                        .round()
-                                                        .toString(),
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkpinkscolor,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                ],
-                                              ),
-                                              Column(
-                                                children: [
-                                                  RangeSlider(
-                                                    activeColor: notifire
-                                                        .getdarkpinkscolor,
-                                                    inactiveColor: notifire
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Divider(
+                                                    color: notifire
                                                         .getpinkscolor
                                                         .withOpacity(0.4),
-                                                    values: _currentRangeValues,
-                                                    min: 0,
-                                                    //divisions: 20,
-                                                    max: 100,
-                                                    // labels: RangeLabels(
-                                                    //   _currentRangeValues.start
-                                                    //       .round()
-                                                    //       .toString(),
-                                                    //   _currentRangeValues.end
-                                                    //       .round()
-                                                    //       .toString(),
-                                                    // ),
-                                                    onChanged:
-                                                        (RangeValues values) {
-                                                      setState(() {
-                                                        _currentRangeValues =
-                                                            values;
-                                                      });
-                                                    },
+                                                    thickness: 1,
                                                   ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Divider(
-                                                  color: notifire.getpinkscolor
-                                                      .withOpacity(0.4),
-                                                  thickness: 1,
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 100,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                  Text(
-                                                    CustomStrings.onlinenow,
-                                                    style: TextStyle(
-                                                        color: notifire
-                                                            .getdarkscolor,
-                                                        fontSize: height / 50,
-                                                        fontFamily:
-                                                            'Gilroy Bold'),
-                                                  ),
-                                                  const Spacer(),
-                                                  Transform.scale(
-                                                    scale: 0.7,
-                                                    child: CupertinoSwitch(
-                                                      trackColor:
-                                                          notifire.getgreycolor,
-                                                      thumbColor: Colors.white,
-                                                      activeColor: notifire
-                                                          .getpinkscolor,
-                                                      value: _switchValue,
-                                                      onChanged: (value) {
-                                                        setState(
-                                                          () {
-                                                            _switchValue =
-                                                                value;
-                                                          },
-                                                        );
-                                                      },
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    width: width / 20,
-                                                  ),
-                                                ],
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Divider(
-                                                  color: notifire.getpinkscolor
-                                                      .withOpacity(0.4),
-                                                  thickness: 1,
+                                                SizedBox(
+                                                  height: height / 100,
                                                 ),
-                                              ),
-                                              SizedBox(
-                                                height: height / 100,
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: width / 20),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      height: height / 18,
-                                                      width: width / 2.5,
-                                                      decoration: BoxDecoration(
-                                                        color: notifire
-                                                            .getpinkscolor
-                                                            .withOpacity(0.4),
-                                                        borderRadius:
-                                                            const BorderRadius
-                                                                .all(
-                                                          Radius.circular(20),
-                                                        ),
-                                                      ),
-                                                      child: Center(
-                                                        child: Text(
-                                                          CustomStrings.reset,
-                                                          style: TextStyle(
-                                                              color: notifire
-                                                                  .getdarkpinkscolor,
-                                                              fontSize:
-                                                                  height / 50,
-                                                              fontFamily:
-                                                                  'Gilroy Bold'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Spacer(),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      child: Container(
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal: width / 20),
+                                                  child: Row(
+                                                    children: [
+                                                      Container(
                                                         height: height / 18,
                                                         width: width / 2.5,
                                                         decoration:
                                                             BoxDecoration(
                                                           color: notifire
-                                                              .getdarkpinkscolor,
+                                                              .getpinkscolor
+                                                              .withOpacity(0.4),
                                                           borderRadius:
                                                               const BorderRadius
                                                                   .all(
@@ -1085,10 +1266,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                                         ),
                                                         child: Center(
                                                           child: Text(
-                                                            CustomStrings.apply,
+                                                            CustomStrings.reset,
                                                             style: TextStyle(
-                                                                color: Colors
-                                                                    .white,
+                                                                color: notifire
+                                                                    .getdarkpinkscolor,
                                                                 fontSize:
                                                                     height / 50,
                                                                 fontFamily:
@@ -1096,11 +1277,47 @@ class _SearchScreenState extends State<SearchScreen> {
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                      const Spacer(),
+                                                      GestureDetector(
+                                                        onTap: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        child: Container(
+                                                          height: height / 18,
+                                                          width: width / 2.5,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: notifire
+                                                                .getdarkpinkscolor,
+                                                            borderRadius:
+                                                                const BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  20),
+                                                            ),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                              CustomStrings
+                                                                  .apply,
+                                                              style: TextStyle(
+                                                                  color: Colors
+                                                                      .white,
+                                                                  fontSize:
+                                                                      height /
+                                                                          50,
+                                                                  fontFamily:
+                                                                      'Gilroy Bold'),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -1207,8 +1424,22 @@ class _SearchScreenState extends State<SearchScreen> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: height / 80,
+                              ),
+                              Text(
+                                'Local Users',
+                                style: TextStyle(
+                                  color: notifire.getdarkscolor,
+                                  fontSize: height / 40,
+                                  fontFamily: 'Gilroy Bold',
+                                ),
+                              ),
+                              SizedBox(
+                                height: height / 80,
+                              ),
                               Container(
-                                height: height / 2.3,
+                                height: height / 2.6,
                                 width: width,
                                 decoration: const BoxDecoration(
                                   borderRadius: BorderRadius.only(
@@ -1299,9 +1530,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                                               children: [
                                                                 Image.asset(
                                                                   "image/personal.png",
-                                                                  height:
-                                                                      height /
-                                                                          50,
+                                                                  width: width /
+                                                                      28,
                                                                 ),
                                                                 SizedBox(
                                                                     width:
@@ -1325,27 +1555,24 @@ class _SearchScreenState extends State<SearchScreen> {
                                                             ),
                                                             SizedBox(
                                                                 height: height /
-                                                                    90),
+                                                                    160),
                                                             Row(
                                                               children: [
                                                                 Image.asset(
                                                                   "image/msg.png",
-                                                                  height:
-                                                                      height /
-                                                                          55,
+                                                                  width: width /
+                                                                      28,
                                                                 ),
                                                                 SizedBox(
                                                                     width:
                                                                         width /
                                                                             40),
                                                                 Text(
-                                                                  "32 MILES",
+                                                                  "32 Miles",
                                                                   style:
                                                                       TextStyle(
                                                                     color: notifire
-                                                                        .getgreycolor
-                                                                        .withOpacity(
-                                                                            0.6),
+                                                                        .getgreycolor,
                                                                     fontSize:
                                                                         height /
                                                                             50,
@@ -1360,7 +1587,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                       ],
                                                     ),
                                                     SizedBox(
-                                                        height: height / 60),
+                                                        height: height / 90),
                                                     Row(
                                                       children: [
                                                         Text(
@@ -1424,7 +1651,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                     Padding(
                                                                       padding: EdgeInsets.symmetric(
                                                                           vertical:
-                                                                              width / 70),
+                                                                              width / 60),
                                                                       child: Image
                                                                           .asset(
                                                                         interest[
@@ -1434,7 +1661,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                                                       ),
                                                                     ),
                                                                     SizedBox(
-                                                                      width: 3,
+                                                                      width:
+                                                                          width /
+                                                                              70,
                                                                     ),
                                                                     Text(
                                                                       name[

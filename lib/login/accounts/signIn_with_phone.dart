@@ -1,22 +1,24 @@
+import 'dart:developer';
+
 import 'package:dating/utils/media.dart';
 import 'package:dating/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/colornotifire.dart';
-import '../utils/itextfield.dart';
-import '../utils/string.dart';
-import '../view_model/auth_view_model.dart';
+import '../../utils/colornotifire.dart';
+import '../../utils/itextfield.dart';
+import '../../utils/string.dart';
+import '../../view_model/auth_view_model.dart';
 
-class SignIn extends StatefulWidget {
-  const SignIn({Key? key}) : super(key: key);
+class SignInWithPhone extends StatefulWidget {
+  const SignInWithPhone({Key? key}) : super(key: key);
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignInWithPhone> createState() => _SignInWithPhoneState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignInWithPhoneState extends State<SignInWithPhone> {
   late ColorNotifire notifire;
 
   getdarkmodepreviousstate() async {
@@ -29,7 +31,7 @@ class _SignInState extends State<SignIn> {
     }
   }
 
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -105,7 +107,7 @@ class _SignInState extends State<SignIn> {
                   width: width / 15,
                 ),
                 Text(
-                  CustomStrings.email,
+                  CustomStrings.phone,
                   textAlign: TextAlign.start,
                   style: TextStyle(
                       fontFamily: 'Gilroy Bold',
@@ -120,15 +122,14 @@ class _SignInState extends State<SignIn> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width / 18),
               child: Customtextfild2.textField(
-                _emailController,
-                CustomStrings.emails,
-                notifire.getdarkscolor,
-                Padding(
-                  padding: EdgeInsets.all(height / 400),
-                  child: Image.asset("image/email.png"),
-                ),
-                notifire.getlightingcolor,
-              ),
+                  _phoneController,
+                  '+44 7811122224',
+                  notifire.getdarkscolor,
+                  Image.asset(
+                    "image/phone.png",
+                  ),
+                  notifire.getlightingcolor,
+                  keyboardType: TextInputType.phone),
             ),
             SizedBox(
               height: height / 40,
@@ -166,16 +167,17 @@ class _SignInState extends State<SignIn> {
             ),
             GestureDetector(
               onTap: () {
-                if (_emailController.text.isNotEmpty &&
+                if (_phoneController.text.isNotEmpty &&
+                    _phoneController.text.length > 11 &&
                     _passwordController.text.isNotEmpty) {
+                  log('${_phoneController.text} and ${_passwordController.text}');
                   Map data = {
-                    'email': _emailController.text.toString().trim(),
+                    'phoneNumber': _phoneController.text.toString().trim(),
                     'password': _passwordController.text.toString(),
                   };
-
                   authViewModel.loginApi(context, data: data);
                 } else {
-                  Utils.flutterToast('Enter Email and Password');
+                  Utils.flutterToast('Enter Phone and Password');
                   print(
                       '**********************  enter Email and Password ****************');
                 }

@@ -12,6 +12,10 @@ class CustomStrings {
   static const String beth = 'Beth';
   static const String date = 'Expiration Date: April 31,2019';
   static const String messages = 'Messages';
+  static const String recentMessages = 'Recent Messages';
+  static const String viewAllMessages = 'View All Messages';
+  static const String latestNews = 'Latest News';
+  static const String viewAllNews = 'View All News';
   static const String recent = 'Recent Matches';
   static const String quin = 'Quin';
   static const String interested = 'Interested in';
@@ -69,6 +73,8 @@ class CustomStrings {
   static const String fullname = 'Full Name';
   static const String editprofile = 'Edit profile';
   static const String notification = 'Notification';
+  static const String notifications = 'Notifications';
+  static const String viewAllNotifications = 'View All Notifications';
   static const String security = 'Security';
   static const String darkmode = 'Dark Mode';
   static const String invitefriends = 'Invite Friends';
@@ -174,6 +180,7 @@ class CustomStrings {
   static const String chat5 = 'That sounds great, I’d love to!';
   static const String matched = 'YOU MATCHED WITH CATIE ON 7/6/19';
   static const String emails = 'Email';
+  static const String phone = 'Phone';
   static const String continues = 'Continue';
   static const String birthdate = 'BIRTHDATE';
   static const String birthhdates = 'Birthdate';
@@ -181,6 +188,7 @@ class CustomStrings {
   static const String passwords = 'Password';
   static const String login = 'Login with Phone';
   static const String loging = 'Login with Google';
+  static const String loginWithFacebook = 'Login with Facebook';
   static const String premium = 'Premium';
   static const String today = 'Sign up today for free!';
   static const String todaySignIn = 'Sign In Here';

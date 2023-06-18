@@ -202,6 +202,11 @@ class _ProfileState extends State<Profile> {
                               ),
                               child: GestureDetector(
                                 onTap: () {
+                                  debugPrint('Next Page');
+                                  _pageControllerOfReview.nextPage(
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      curve: Curves.easeIn);
                                   // Navigator.push(
                                   //   context,
                                   //   MaterialPageRoute(

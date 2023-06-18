@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating/login/meeting.dart';
-import 'package:dating/login/signIn.dart';
+import 'package:dating/login/signIn_with_email.dart';
 import 'package:dating/utils/custombutton.dart';
 import 'package:dating/utils/media.dart';
 import 'package:flutter/material.dart';
@@ -426,7 +426,7 @@ class _OnbondingState extends State<Onbonding> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignIn(),
+                                  builder: (context) => const SignInWithEmail(),
                                 ),
                               );
                             },
@@ -496,7 +496,7 @@ class _OnbondingState extends State<Onbonding> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SignIn(),
+                                  builder: (context) => const SignInWithEmail(),
                                 ),
                               );
                             },

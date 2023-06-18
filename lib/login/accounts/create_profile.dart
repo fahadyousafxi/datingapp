@@ -191,12 +191,6 @@ class _CreateProfileState extends State<CreateProfile> {
     'Other',
   ];
 
-  String seconddropdownvalue = 'Male';
-  var seconditems = [
-    'Male',
-    'Female',
-  ];
-
   String levelOfReligiouslyDropdownValue = 'Moderate';
   var levelOfReligiouslyItems = [
     'Moderate',
@@ -432,6 +426,12 @@ class _CreateProfileState extends State<CreateProfile> {
     'Zambian',
     'Zimbabwean',
   ];
+
+  String seconddropdownvalue = 'Male';
+  var seconditems = [
+    'Male',
+    'Female',
+  ];
   String firstdropdownvalue = '24';
   var firstitems = [
     '18',
@@ -621,28 +621,33 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: seconddropdownvalue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 6),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon:
+                                // Row(
+                                //   children: [
+                                //     SizedBox(width: width / 200),
+                                //     Padding(
+                                //       padding: EdgeInsets.only(left: width / 6),
+                                //       child:
+                                Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
+                            //     ),
+                            //   ],
+                            // ),
                             items: seconditems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -691,28 +696,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: firstdropdownvalue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 4),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: firstitems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -871,12 +871,14 @@ class _CreateProfileState extends State<CreateProfile> {
                             items: maritalStatusItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: Expanded(
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1072,28 +1074,33 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: noOfChildrenDropdownValue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 6),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon:
+                                // Row(
+                                //   children: [
+                                //     SizedBox(width: width / 200),
+                                //     Padding(
+                                //       padding: EdgeInsets.only(left: width / 6),
+                                //       child:
+                                Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
+                            //     ),
+                            //   ],
+                            // ),
                             items: noOfChildrenItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1142,28 +1149,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: sectDropdownValue,
-                            icon: Row(
-                              children: [
-                                // SizedBox(width: width / 20),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 5),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: sectItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1267,28 +1269,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: doYouDrinkDownValue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 6),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: doYouDrinkItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1337,28 +1334,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: doYouSmokeDownValue,
-                            icon: Row(
-                              children: [
-                                // SizedBox(width: width / 20),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 5),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: doYouSmokeItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1413,29 +1405,24 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: muslimOrRevertDownValue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 9),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items:
                                 muslimOrRevertItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1484,29 +1471,24 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: areYouOnMedicationDownValue,
-                            icon: Row(
-                              children: [
-                                // SizedBox(width: width / 20),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 5),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: areYouOnMedicationItems
                                 .map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 2.3 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1564,28 +1546,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: ethnicityDownValue,
-                            icon: Row(
-                              children: [
-                                SizedBox(width: width / 200),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 2),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: ethnicityItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 1.125 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1640,28 +1617,23 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: nationalityDropdownValue,
-                            icon: Row(
-                              children: [
-                                // SizedBox(width: width / 20),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 5),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: nationalityItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 1.125 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
@@ -1716,29 +1688,24 @@ class _CreateProfileState extends State<CreateProfile> {
                           child: DropdownButton(
                             underline: const SizedBox(),
                             value: levelOfReligiouslyDropdownValue,
-                            icon: Row(
-                              children: [
-                                // SizedBox(width: width / 20),
-                                Padding(
-                                  padding: EdgeInsets.only(left: width / 2),
-                                  child: Icon(
-                                    Icons.arrow_drop_down_sharp,
-                                    size: height / 30,
-                                    color: notifire.getgreycolor,
-                                  ),
-                                ),
-                              ],
+                            icon: Icon(
+                              Icons.arrow_drop_down_sharp,
+                              size: height / 30,
+                              color: notifire.getgreycolor,
                             ),
                             items: levelOfReligiouslyItems
                                 .map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Text(
-                                  seconditems,
-                                  style: TextStyle(
-                                      color: notifire.getdarkscolor,
-                                      fontSize: height / 60,
-                                      fontFamily: 'Gilroy Medium'),
+                                child: SizedBox(
+                                  width: width / 1.125 - 50,
+                                  child: Text(
+                                    seconditems,
+                                    style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Medium'),
+                                  ),
                                 ),
                               );
                             }).toList(),
