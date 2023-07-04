@@ -2,6 +2,7 @@ import 'package:dating/bottom/bottombar.dart';
 import 'package:flutter/material.dart';
 
 import '../login/accounts/account.dart';
+import '../login/accounts/sms.dart';
 import '../repository/auth_repository.dart';
 import '../utils/utils.dart';
 import 'TEST_user_view_model.dart';
@@ -27,7 +28,7 @@ class AuthViewModel with ChangeNotifier {
       setLoading(false);
       debugPrint('&&&&&&&&&&&&&&' + value.toString() + '&&&&&&&&&&&&&&');
       // Utils.flutterToast(value['token'].toString());
-      Utils.flutterToast('Sign in successfully');
+      Utils.flutterToast('Sign in successful');
       // userViewModel.saveUser(value['token'].toString());
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Bottom()));
@@ -36,7 +37,13 @@ class AuthViewModel with ChangeNotifier {
       setLoading(false);
 
       debugPrint('*********' + error.toString() + '*********');
-      Utils.flutterToast(error.toString());
+      if (error.toString() ==
+          'Invalid Input{"message":"Invalid Email or password"}') {
+        Utils.flutterToast(
+            'Invalid Input{"message":"Invalid Phone Number or Password"}');
+      } else {
+        Utils.flutterToast(error.toString());
+      }
     });
   }
 
@@ -144,17 +151,67 @@ class AuthViewModel with ChangeNotifier {
       // code
 
       setLoading(false);
+
       debugPrint(value.toString());
-      // Utils.flutterToast(value['token'].toString());
-      Utils.flutterToast('Sign in successfully');
-      // userViewModel.saveUser(value['token'].toString());
+
+      // Utils.flutterToast(value['user']['_id'].toString());
+      // Utils.flutterToast('Sign in successfully');
+
+      userViewModel.saveUser(value['token'].toString());
+
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Bottom()));
+        context,
+        MaterialPageRoute(
+          builder: (context) => Sms(
+              password: '',
+              email: '',
+              name: '',
+              birthDay: '',
+              id: value['user']['_id'].toString()),
+        ),
+      );
     }).onError((error, stackTrace) {
       // onError code
       setLoading(false);
 
       debugPrint(error.toString());
+      Utils.flutterToast(error.toString());
+      // Utils.flutterToast('***************    error    ****************');
+    });
+  }
+
+  /// send OTP By Phone Number Api Call
+  Future<void> sendOTPByPhoneNumber(BuildContext context,
+      {required dynamic data}) async {
+    setLoading(true);
+    _myRepo.sendOTPByPhoneNumberApiCall(data).then((value) {
+      // code
+
+      setLoading(false);
+      debugPrint(value.toString());
+      debugPrint(data['id'].toString());
+      // Utils.flutterToast(value['user']['_id'].toString());
+      Utils.flutterToast('Sign in successful');
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Account(
+              id: data['id'].toString(),
+              name: '',
+              email: '',
+              birthDate: '',
+              password: '',
+              initialPage: 1),
+        ),
+      );
+      userViewModel.saveUser(value['token'].toString());
+    }).onError((error, stackTrace) {
+      // onError code
+      setLoading(false);
+
+      debugPrint(error.toString());
+      debugPrint(data['id'].toString());
+
       Utils.flutterToast(error.toString());
       // Utils.flutterToast('***************    error    ****************');
     });

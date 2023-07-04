@@ -55,7 +55,7 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 0),
               child: Container(
-                height: height / 3.5,
+                // height: height / 3.5,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                     Radius.circular(10),
@@ -67,28 +67,30 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
                     Container(
                       padding: EdgeInsets.only(left: 15, right: 15, top: 15),
                       color: Colors.transparent,
-                      height: height / 6,
-                      child: PageView(
-                        physics: const ClampingScrollPhysics(),
-                        controller: _pageController,
-                        onPageChanged: (int page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
-                        children: <Widget>[
-                          matches(),
-                          matches2(),
-                          matches(),
-                          matches2(),
-                          matches(),
-                          matches(),
-                          matches2(),
-                        ],
+                      height: height / 5.0,
+                      child: Expanded(
+                        child: PageView(
+                          physics: const ClampingScrollPhysics(),
+                          controller: _pageController,
+                          onPageChanged: (int page) {
+                            setState(() {
+                              _currentPage = page;
+                            });
+                          },
+                          children: <Widget>[
+                            matches(),
+                            matches2(),
+                            matches(),
+                            matches2(),
+                            matches(),
+                            matches(),
+                            matches2(),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: height / 80,
+                      height: 8,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -98,6 +100,9 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
                       height: height / 80,
                     ),
                     widget.child!,
+                    SizedBox(
+                      height: height / 50,
+                    ),
                   ],
                 ),
               ),
@@ -250,7 +255,7 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
         ),
 
         SizedBox(
-          height: 22,
+          height: 15,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -277,14 +282,19 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
             ),
           ],
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            'Good one',
-            style: TextStyle(
-                color: notifire.getdarkscolor.withOpacity(0.6),
-                fontSize: height / 60,
-                fontFamily: 'Gilroy Medium'),
+
+        Expanded(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 3.0),
+              child: Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                style: TextStyle(
+                    color: notifire.getdarkscolor.withOpacity(0.6),
+                    fontSize: height / 60,
+                    fontFamily: 'Gilroy Medium'),
+              ),
+            ),
           ),
         ),
         // Text(

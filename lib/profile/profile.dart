@@ -1,4 +1,3 @@
-import 'package:dating/profile/all_reviews.dart';
 import 'package:dating/profile/profile_info.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -143,7 +142,7 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: height / 2.15),
+                  padding: EdgeInsets.only(top: height / 2.14),
                   child: Center(
                     child: Container(
                       height: height / 30,
@@ -184,73 +183,74 @@ class _ProfileState extends State<Profile> {
                         },
                         children: [
                           ProfileInfo(
-                              childIndicator: Container(
-                                height: height / 30,
-                                width: width / 6,
+                            childIndicator: Container(
+                              height: height / 30,
+                              width: width / 6,
+                              decoration: BoxDecoration(
+                                color: notifire.getpinkscolor.withOpacity(0.3),
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(12),
+                                  topLeft: Radius.circular(12),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: _buildPageIndicatorOfReview(),
+                              ),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                debugPrint('Next Page');
+                                _pageControllerOfReview.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeIn);
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => const Upgrade(),
+                                //   ),
+                                // );
+                              },
+                              child: Container(
+                                height: height / 20,
+                                width: width / 2.5,
                                 decoration: BoxDecoration(
-                                  color:
-                                      notifire.getpinkscolor.withOpacity(0.3),
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(12),
-                                    topLeft: Radius.circular(12),
+                                  color: notifire.getlightingcolor
+                                      .withOpacity(0.9),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(20),
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: _buildPageIndicatorOfReview(),
+                                child: Center(
+                                  child: Text(
+                                    'View All Reviews',
+                                    style: TextStyle(
+                                        color: notifire.getdarkspinkcolor,
+                                        fontSize: height / 60,
+                                        fontFamily: 'Gilroy Bold'),
+                                  ),
                                 ),
                               ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  debugPrint('Next Page');
-                                  _pageControllerOfReview.nextPage(
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeIn);
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => const Upgrade(),
-                                  //   ),
-                                  // );
-                                },
-                                child: Container(
-                                  height: height / 20,
-                                  width: width / 2.5,
-                                  decoration: BoxDecoration(
-                                    color: notifire.getlightingcolor
-                                        .withOpacity(0.9),
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(20),
-                                    ),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'View All Reviews',
-                                      style: TextStyle(
-                                          color: notifire.getdarkspinkcolor,
-                                          fontSize: height / 60,
-                                          fontFamily: 'Gilroy Bold'),
-                                    ),
-                                  ),
-                                ),
-                              )),
-                          AllReview(
-                              childIndicator: Container(
-                            height: height / 30,
-                            width: width / 6,
-                            decoration: BoxDecoration(
-                              color: notifire.getpinkscolor.withOpacity(0.3),
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(12),
-                                topLeft: Radius.circular(12),
-                              ),
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: _buildPageIndicatorOfReview(),
-                            ),
-                          ))
+                          ),
+
+                          /// Comment ny Fahad for the slide to reviews in profile page
+                          // AllReview(
+                          //     childIndicator: Container(
+                          //   height: height / 30,
+                          //   width: width / 6,
+                          //   decoration: BoxDecoration(
+                          //     color: notifire.getpinkscolor.withOpacity(0.3),
+                          //     borderRadius: BorderRadius.only(
+                          //       topRight: Radius.circular(12),
+                          //       topLeft: Radius.circular(12),
+                          //     ),
+                          //   ),
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.center,
+                          //     children: _buildPageIndicatorOfReview(),
+                          //   ),
+                          // ))
                         ],
                       )),
                 ),

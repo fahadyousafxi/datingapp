@@ -125,7 +125,7 @@ class _ProfileInfoState extends State<ProfileInfo> {
               Text(
                 "32 MILES",
                 style: TextStyle(
-                    color: notifire.getgreycolor.withOpacity(0.6),
+                    color: notifire.getgreycolor,
                     fontSize: height / 60,
                     fontFamily: 'Gilroy Bold'),
               ),
@@ -349,15 +349,18 @@ class _ProfileInfoState extends State<ProfileInfo> {
             ],
           ),
           SizedBox(
-            height: height / 60,
+            height: height / 20,
           ),
+
           WidgetOfProfileReview(
             child: widget.child,
           ),
           SizedBox(
-            height: height / 60,
+            height: height / 20, // height /60,
           ),
-          widget.childIndicator
+
+          /// Comment by Fahad
+          // widget.childIndicator
         ],
       ),
     );

@@ -178,12 +178,12 @@ class _MeetingState extends State<Meeting> {
                 final user = await GoogleSignInApi.login();
                 if (user != null) {
                   Utils.flutterToast(
-                      'Name: ${user?.displayName} \n Email: ${user?.email} ');
+                      'Name: ${user.displayName} \n Email: ${user.email} ');
 
                   Map data = {
-                    'name': user?.displayName,
-                    'email': user?.email,
-                    'token': user?.id,
+                    'name': user.displayName,
+                    'email': user.email,
+                    'token': user.id,
                   };
                   authViewModel.loginWithGoogle(context, data: data);
                 } else {

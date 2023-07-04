@@ -613,7 +613,7 @@ class _SignUpState extends State<SignUp> {
                           height: height / 400,
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 5),
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           height: height / 20,
                           // width: width / 2.3,
                           decoration: BoxDecoration(

@@ -15,10 +15,12 @@ class Sms extends StatefulWidget {
   String? email;
   String? birthDay;
   String? password;
+  String? id;
   Sms(
       {required this.password,
       required this.email,
       required this.name,
+      required this.id,
       required this.birthDay,
       Key? key})
       : super(key: key);
@@ -1481,19 +1483,35 @@ class _SmsState extends State<Sms> {
             ),
             GestureDetector(
                 onTap: () {
-                  if (_phoneNumber.text.isNotEmpty || widget.name == '') {
-                    Map data = {
-                      'name': widget.name,
-                      'email': widget.email,
-                      'phoneNumber':
-                          countryCode + _phoneNumber.text.toString().trim(),
-                      'birthDate': widget.birthDay,
-                      'password': widget.password,
-                    };
+                  if (widget.name != '' && widget.email != '') {
+                    if (_phoneNumber.text.isNotEmpty || widget.name == '') {
+                      Map data = {
+                        'name': widget.name,
+                        'email': widget.email,
+                        'phoneNumber':
+                            countryCode + _phoneNumber.text.toString().trim(),
+                        'birthDate': widget.birthDay,
+                        'password': widget.password,
+                      };
 
-                    authViewModel.registerApi(context, data: data);
+                      authViewModel.registerApi(context, data: data);
+                    } else {
+                      Utils.flutterToast(
+                          'Enter Phone Number or something wrong');
+                    }
                   } else {
-                    Utils.flutterToast('Enter Phone Number or something wrong');
+                    if (_phoneNumber.text.isNotEmpty) {
+                      Map data = {
+                        'id': widget.id,
+                        'phoneNumber':
+                            countryCode + _phoneNumber.text.toString().trim(),
+                      };
+
+                      authViewModel.sendOTPByPhoneNumber(context, data: data);
+                    } else {
+                      Utils.flutterToast(
+                          'Enter Phone Number or something wrong');
+                    }
                   }
                 },
                 child: Custombutton.button(

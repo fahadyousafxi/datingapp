@@ -108,10 +108,12 @@ class _AccountState extends State<Account> {
                         },
                         children: [
                           Sms(
-                              password: widget.password,
-                              email: widget.email,
-                              name: widget.name,
-                              birthDay: widget.birthDate),
+                            password: widget.password,
+                            email: widget.email,
+                            name: widget.name,
+                            birthDay: widget.birthDate,
+                            id: null,
+                          ),
                           Verify(
                             id: widget.id,
                           ),

@@ -53,7 +53,7 @@ class AuthRepository {
     }
   }
 
-  /// update password Api Call
+  /// verify OTP Api Call
   Future<dynamic> verifyOTPApi(dynamic data) async {
     try {
       dynamic response =
@@ -77,6 +77,22 @@ class AuthRepository {
       if (kDebugMode) {
         print(
             '*************************** ${AppUrl.socialLoginEndPoint} ************************');
+      }
+
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  /// send OTP By Phone Number Api Call
+  Future<dynamic> sendOTPByPhoneNumberApiCall(dynamic data) async {
+    try {
+      dynamic response = await _apiServices.getPostApiResponse(
+          AppUrl.sendOTPByPhoneNumberEndPoint, data);
+      if (kDebugMode) {
+        print(
+            '*************************** ${AppUrl.sendOTPByPhoneNumberEndPoint} ************************');
       }
 
       return response;
