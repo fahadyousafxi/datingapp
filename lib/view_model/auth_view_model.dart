@@ -154,22 +154,40 @@ class AuthViewModel with ChangeNotifier {
 
       debugPrint(value.toString());
 
-      // Utils.flutterToast(value['user']['_id'].toString());
+      // Utils.flutterToast(value['user']['isVerified'].toString());
       // Utils.flutterToast('Sign in successfully');
 
-      userViewModel.saveUser(value['token'].toString());
+      if (value['user']['isVerified'] == true) {
+        userViewModel.saveUser(value['token'].toString());
+        Utils.flutterToast('Sign in successful');
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => Sms(
-              password: '',
-              email: '',
-              name: '',
-              birthDay: '',
-              id: value['user']['_id'].toString()),
-        ),
-      );
+        // Navigator.pushReplacement(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) => const Account(
+        //         name: '',
+        //         email: '',
+        //         birthDate: '',
+        //         password: '',
+        //         initialPage: 2),
+        //   ),
+        // );
+
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Bottom()));
+      } else {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Sms(
+                password: '',
+                email: '',
+                name: '',
+                birthDay: '',
+                id: value['user']['_id'].toString()),
+          ),
+        );
+      }
     }).onError((error, stackTrace) {
       // onError code
       setLoading(false);

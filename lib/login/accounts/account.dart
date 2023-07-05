@@ -217,7 +217,8 @@ class _AccountState extends State<Account> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
+                                      Navigator.pop(context);
+                                      Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {

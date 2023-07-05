@@ -65,30 +65,31 @@ class _WidgetOfProfileReviewState extends State<WidgetOfProfileReview> {
                 child: Column(
                   children: [
                     Container(
-                      padding: EdgeInsets.only(left: 15, right: 15, top: 15),
-                      color: Colors.transparent,
-                      height: height / 5.0,
-                      child: Expanded(
-                        child: PageView(
-                          physics: const ClampingScrollPhysics(),
-                          controller: _pageController,
-                          onPageChanged: (int page) {
-                            setState(() {
-                              _currentPage = page;
-                            });
-                          },
-                          children: <Widget>[
-                            matches(),
-                            matches2(),
-                            matches(),
-                            matches2(),
-                            matches(),
-                            matches(),
-                            matches2(),
-                          ],
-                        ),
-                      ),
-                    ),
+                        padding: EdgeInsets.only(left: 15, right: 15, top: 15),
+                        color: Colors.transparent,
+                        height: height / 5.0,
+                        child: Flex(direction: Axis.vertical, children: [
+                          Expanded(
+                            child: PageView(
+                              physics: const ClampingScrollPhysics(),
+                              controller: _pageController,
+                              onPageChanged: (int page) {
+                                setState(() {
+                                  _currentPage = page;
+                                });
+                              },
+                              children: <Widget>[
+                                matches(),
+                                matches2(),
+                                matches(),
+                                matches2(),
+                                matches(),
+                                matches(),
+                                matches2(),
+                              ],
+                            ),
+                          ),
+                        ])),
                     SizedBox(
                       height: 8,
                     ),

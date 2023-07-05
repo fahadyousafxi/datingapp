@@ -248,6 +248,7 @@ class _SettingsState extends State<Settings> {
             GestureDetector(
               onTap: () async {
                 await GoogleSignInApi.logOut();
+                Navigator.pop(context);
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(

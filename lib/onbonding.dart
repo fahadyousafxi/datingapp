@@ -390,7 +390,7 @@ class _OnbondingState extends State<Onbonding> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const Meeting(),
@@ -461,7 +461,7 @@ class _OnbondingState extends State<Onbonding> {
                       ),
                       GestureDetector(
                           onTap: () {
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const Meeting(),

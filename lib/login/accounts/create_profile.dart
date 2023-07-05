@@ -871,14 +871,12 @@ class _CreateProfileState extends State<CreateProfile> {
                             items: maritalStatusItems.map((String seconditems) {
                               return DropdownMenuItem(
                                 value: seconditems,
-                                child: Expanded(
-                                  child: Text(
-                                    seconditems,
-                                    style: TextStyle(
-                                        color: notifire.getdarkscolor,
-                                        fontSize: height / 60,
-                                        fontFamily: 'Gilroy Medium'),
-                                  ),
+                                child: Text(
+                                  seconditems,
+                                  style: TextStyle(
+                                      color: notifire.getdarkscolor,
+                                      fontSize: height / 60,
+                                      fontFamily: 'Gilroy Medium'),
                                 ),
                               );
                             }).toList(),

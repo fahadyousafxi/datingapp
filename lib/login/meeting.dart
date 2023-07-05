@@ -2,7 +2,6 @@ import 'package:dating/login/accounts/account.dart';
 import 'package:dating/login/accounts/signIn_with_phone.dart';
 import 'package:dating/login/signIn_with_email.dart';
 import 'package:dating/login/signup.dart';
-import 'package:dating/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,6 +10,7 @@ import '../api/google_signin_api.dart';
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 import '../utils/string.dart';
+import '../utils/utils.dart';
 import '../view_model/auth_view_model.dart';
 
 class Meeting extends StatefulWidget {
@@ -75,7 +75,7 @@ class _MeetingState extends State<Meeting> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const SignInWithEmail(),
@@ -124,7 +124,7 @@ class _MeetingState extends State<Meeting> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => SignInWithPhone()),
                 );
@@ -175,11 +175,11 @@ class _MeetingState extends State<Meeting> {
             ),
             GestureDetector(
               onTap: () async {
+                await GoogleSignInApi.logOut();
                 final user = await GoogleSignInApi.login();
                 if (user != null) {
                   Utils.flutterToast(
                       'Name: ${user.displayName} \n Email: ${user.email} ');
-
                   Map data = {
                     'name': user.displayName,
                     'email': user.email,
