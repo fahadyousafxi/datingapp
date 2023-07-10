@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 
+import 'package:dating/utils/utils.dart';
+import 'package:dating/view_model/uploads_photos_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +41,7 @@ class _MediaState extends State<Media> {
 
   @override
   Widget build(BuildContext context) {
+    final uploadPhotosViewModel = Provider.of<UploadPhotosViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -90,9 +94,9 @@ class _MediaState extends State<Media> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        // setState(() {
-                                        //   _openCamera(context);
-                                        // });
+                                        setState(() {
+                                          _openCamera(context);
+                                        });
                                       },
                                       child: Center(
                                         child: Container(
@@ -168,13 +172,13 @@ class _MediaState extends State<Media> {
                                           width: width / 2.5,
                                           decoration: BoxDecoration(
                                             color:
-                                            Colors.white.withOpacity(0.6),
+                                                Colors.white.withOpacity(0.6),
                                             borderRadius:
-                                            BorderRadius.circular(20),
+                                                BorderRadius.circular(20),
                                           ),
                                           child: Row(
                                             mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                                MainAxisAlignment.center,
                                             children: [
                                               Icon(
                                                 Icons.camera_alt,
@@ -203,413 +207,436 @@ class _MediaState extends State<Media> {
                           ),
                         ),
                   const Spacer(),
-                  Column(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          // setState(() {
-                          //   _openCamera1(context);
-                          // });
-                        },
-                        child: (imageFile1 == null)
-                            ? Container(
-                                height: height / 7.5,
-                                width: width / 3.5,
-                                decoration: BoxDecoration(
-                                  color: notifire.getlightingcolor,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: height / 100,
-                                    ),
-                                    Icon(
-                                      Icons.camera_alt_outlined,
-                                      color: notifire.getpinkscolor
-                                          .withOpacity(0.4),
-                                      size: height / 20,
-                                    ),
-                                    SizedBox(
-                                      height: height / 80,
-                                    ),
-                                    Container(
-                                      height: height / 30,
-                                      width: width / 5,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                          color: notifire.getpinkscolor),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                          ),
-                                          Text(
-                                            "Add",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: height / 60,
-                                                fontFamily: 'Gilroy Bold'),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : Container(
-                                height: height / 7.5,
-                                width: width / 3.5,
-                                color: Colors.transparent,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                  child: Image.file(
-                                    File(
-                                      imageFile1!.path,
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                      ),
-                      SizedBox(
-                        height: height / 100,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // setState(() {
-                          //   _openCamera2(context);
-                          // });
-                        },
-                        child: (imageFile2 == null)
-                            ? Container(
-                                height: height / 7.5,
-                                width: width / 3.5,
-                                decoration: BoxDecoration(
-                                  color: notifire.getlightingcolor,
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: height / 100,
-                                    ),
-                                    Icon(
-                                      Icons.camera_alt_outlined,
-                                      color: notifire.getpinkscolor
-                                          .withOpacity(0.4),
-                                      size: height / 20,
-                                    ),
-                                    SizedBox(
-                                      height: height / 80,
-                                    ),
-                                    Container(
-                                      height: height / 30,
-                                      width: width / 5,
-                                      decoration: BoxDecoration(
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(20),
-                                          ),
-                                          color: notifire.getpinkscolor),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Icon(
-                                            Icons.add,
-                                            color: Colors.white,
-                                          ),
-                                          Text(
-                                            "Add",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: height / 60,
-                                                fontFamily: 'Gilroy Bold'),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            : Container(
-                                height: height / 7.5,
-                                width: width / 3.5,
-                                color: Colors.transparent,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(15),
-                                  ),
-                                  child: Image.file(
-                                    File(
-                                      imageFile2!.path,
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                      ),
-                    ],
-                  ),
+                  // Column(
+                  //   children: [
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         // setState(() {
+                  //         //   _openCamera1(context);
+                  //         // });
+                  //       },
+                  //       child: (imageFile1 == null)
+                  //           ? Container(
+                  //               height: height / 7.5,
+                  //               width: width / 3.5,
+                  //               decoration: BoxDecoration(
+                  //                 color: notifire.getlightingcolor,
+                  //                 borderRadius: BorderRadius.circular(15),
+                  //               ),
+                  //               child: Column(
+                  //                 children: [
+                  //                   SizedBox(
+                  //                     height: height / 100,
+                  //                   ),
+                  //                   Icon(
+                  //                     Icons.camera_alt_outlined,
+                  //                     color: notifire.getpinkscolor
+                  //                         .withOpacity(0.4),
+                  //                     size: height / 20,
+                  //                   ),
+                  //                   SizedBox(
+                  //                     height: height / 80,
+                  //                   ),
+                  //                   Container(
+                  //                     height: height / 30,
+                  //                     width: width / 5,
+                  //                     decoration: BoxDecoration(
+                  //                         borderRadius: const BorderRadius.all(
+                  //                           Radius.circular(20),
+                  //                         ),
+                  //                         color: notifire.getpinkscolor),
+                  //                     child: Row(
+                  //                       mainAxisAlignment:
+                  //                           MainAxisAlignment.center,
+                  //                       children: [
+                  //                         const Icon(
+                  //                           Icons.add,
+                  //                           color: Colors.white,
+                  //                         ),
+                  //                         Text(
+                  //                           "Add",
+                  //                           style: TextStyle(
+                  //                               color: Colors.white,
+                  //                               fontSize: height / 60,
+                  //                               fontFamily: 'Gilroy Bold'),
+                  //                         ),
+                  //                       ],
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             )
+                  //           : Container(
+                  //               height: height / 7.5,
+                  //               width: width / 3.5,
+                  //               color: Colors.transparent,
+                  //               child: ClipRRect(
+                  //                 borderRadius: const BorderRadius.all(
+                  //                   Radius.circular(15),
+                  //                 ),
+                  //                 child: Image.file(
+                  //                   File(
+                  //                     imageFile1!.path,
+                  //                   ),
+                  //                   fit: BoxFit.cover,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //     ),
+                  //     SizedBox(
+                  //       height: height / 100,
+                  //     ),
+                  //     GestureDetector(
+                  //       onTap: () {
+                  //         // setState(() {
+                  //         //   _openCamera2(context);
+                  //         // });
+                  //       },
+                  //       child: (imageFile2 == null)
+                  //           ? Container(
+                  //               height: height / 7.5,
+                  //               width: width / 3.5,
+                  //               decoration: BoxDecoration(
+                  //                 color: notifire.getlightingcolor,
+                  //                 borderRadius: BorderRadius.circular(15),
+                  //               ),
+                  //               child: Column(
+                  //                 children: [
+                  //                   SizedBox(
+                  //                     height: height / 100,
+                  //                   ),
+                  //                   Icon(
+                  //                     Icons.camera_alt_outlined,
+                  //                     color: notifire.getpinkscolor
+                  //                         .withOpacity(0.4),
+                  //                     size: height / 20,
+                  //                   ),
+                  //                   SizedBox(
+                  //                     height: height / 80,
+                  //                   ),
+                  //                   Container(
+                  //                     height: height / 30,
+                  //                     width: width / 5,
+                  //                     decoration: BoxDecoration(
+                  //                         borderRadius: const BorderRadius.all(
+                  //                           Radius.circular(20),
+                  //                         ),
+                  //                         color: notifire.getpinkscolor),
+                  //                     child: Row(
+                  //                       mainAxisAlignment:
+                  //                           MainAxisAlignment.center,
+                  //                       children: [
+                  //                         const Icon(
+                  //                           Icons.add,
+                  //                           color: Colors.white,
+                  //                         ),
+                  //                         Text(
+                  //                           "Add",
+                  //                           style: TextStyle(
+                  //                               color: Colors.white,
+                  //                               fontSize: height / 60,
+                  //                               fontFamily: 'Gilroy Bold'),
+                  //                         ),
+                  //                       ],
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               ),
+                  //             )
+                  //           : Container(
+                  //               height: height / 7.5,
+                  //               width: width / 3.5,
+                  //               color: Colors.transparent,
+                  //               child: ClipRRect(
+                  //                 borderRadius: const BorderRadius.all(
+                  //                   Radius.circular(15),
+                  //                 ),
+                  //                 child: Image.file(
+                  //                   File(
+                  //                     imageFile2!.path,
+                  //                   ),
+                  //                   fit: BoxFit.cover,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //     ),
+                  //   ],
+                  // ),
                 ],
               ),
               SizedBox(
                 height: height / 100,
               ),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      // setState(() {
-                      //   _openCamera3(context);
-                      // });
-                    },
-                    child: (imageFile3 == null)
-                        ? Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            decoration: BoxDecoration(
-                              color: notifire.getlightingcolor,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: height / 100,
-                                ),
-                                Icon(
-                                  Icons.camera_alt_outlined,
-                                  color:
-                                      notifire.getpinkscolor.withOpacity(0.4),
-                                  size: height / 20,
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                Container(
-                                  height: height / 30,
-                                  width: width / 5,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      color: notifire.getpinkscolor),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        "Add",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: height / 60,
-                                            fontFamily: 'Gilroy Bold'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            color: Colors.transparent,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(15),
-                              ),
-                              child: Image.file(
-                                File(
-                                  imageFile3!.path,
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                  ),
-                  const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      // setState(() {
-                      //   _openCamera4(context);
-                      // });
-                    },
-                    child: (imageFile4 == null)
-                        ? Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            decoration: BoxDecoration(
-                              color: notifire.getlightingcolor,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: height / 100,
-                                ),
-                                Icon(
-                                  Icons.camera_alt_outlined,
-                                  color:
-                                      notifire.getpinkscolor.withOpacity(0.4),
-                                  size: height / 20,
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                Container(
-                                  height: height / 30,
-                                  width: width / 5,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      color: notifire.getpinkscolor),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        "Add",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: height / 60,
-                                            fontFamily: 'Gilroy Bold'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            color: Colors.transparent,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(15),
-                              ),
-                              child: Image.file(
-                                File(
-                                  imageFile4!.path,
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                  ),
-                  const Spacer(),
-                  GestureDetector(
-                    onTap: () {
-                      // setState(() {
-                      //   _openCamera5(context);
-                      // });
-                    },
-                    child: (imageFile5 == null)
-                        ? Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            decoration: BoxDecoration(
-                              color: notifire.getlightingcolor,
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: height / 100,
-                                ),
-                                Icon(
-                                  Icons.camera_alt_outlined,
-                                  color:
-                                      notifire.getpinkscolor.withOpacity(0.4),
-                                  size: height / 20,
-                                ),
-                                SizedBox(
-                                  height: height / 80,
-                                ),
-                                Container(
-                                  height: height / 30,
-                                  width: width / 5,
-                                  decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(20),
-                                      ),
-                                      color: notifire.getpinkscolor),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                      ),
-                                      Text(
-                                        "Add",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: height / 60,
-                                            fontFamily: 'Gilroy Bold'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        : Container(
-                            height: height / 7.5,
-                            width: width / 3.5,
-                            color: Colors.transparent,
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(15),
-                              ),
-                              child: Image.file(
-                                File(
-                                  imageFile5!.path,
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                  ),
-                ],
+              // Row(
+              //   children: [
+              //     GestureDetector(
+              //       onTap: () {
+              //         // setState(() {
+              //         //   _openCamera3(context);
+              //         // });
+              //       },
+              //       child: (imageFile3 == null)
+              //           ? Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               decoration: BoxDecoration(
+              //                 color: notifire.getlightingcolor,
+              //                 borderRadius: BorderRadius.circular(15),
+              //               ),
+              //               child: Column(
+              //                 children: [
+              //                   SizedBox(
+              //                     height: height / 100,
+              //                   ),
+              //                   Icon(
+              //                     Icons.camera_alt_outlined,
+              //                     color:
+              //                         notifire.getpinkscolor.withOpacity(0.4),
+              //                     size: height / 20,
+              //                   ),
+              //                   SizedBox(
+              //                     height: height / 80,
+              //                   ),
+              //                   Container(
+              //                     height: height / 30,
+              //                     width: width / 5,
+              //                     decoration: BoxDecoration(
+              //                         borderRadius: const BorderRadius.all(
+              //                           Radius.circular(20),
+              //                         ),
+              //                         color: notifire.getpinkscolor),
+              //                     child: Row(
+              //                       mainAxisAlignment: MainAxisAlignment.center,
+              //                       children: [
+              //                         const Icon(
+              //                           Icons.add,
+              //                           color: Colors.white,
+              //                         ),
+              //                         Text(
+              //                           "Add",
+              //                           style: TextStyle(
+              //                               color: Colors.white,
+              //                               fontSize: height / 60,
+              //                               fontFamily: 'Gilroy Bold'),
+              //                         ),
+              //                       ],
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             )
+              //           : Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               color: Colors.transparent,
+              //               child: ClipRRect(
+              //                 borderRadius: const BorderRadius.all(
+              //                   Radius.circular(15),
+              //                 ),
+              //                 child: Image.file(
+              //                   File(
+              //                     imageFile3!.path,
+              //                   ),
+              //                   fit: BoxFit.cover,
+              //                 ),
+              //               ),
+              //             ),
+              //     ),
+              //     const Spacer(),
+              //     GestureDetector(
+              //       onTap: () {
+              //         // setState(() {
+              //         //   _openCamera4(context);
+              //         // });
+              //       },
+              //       child: (imageFile4 == null)
+              //           ? Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               decoration: BoxDecoration(
+              //                 color: notifire.getlightingcolor,
+              //                 borderRadius: BorderRadius.circular(15),
+              //               ),
+              //               child: Column(
+              //                 children: [
+              //                   SizedBox(
+              //                     height: height / 100,
+              //                   ),
+              //                   Icon(
+              //                     Icons.camera_alt_outlined,
+              //                     color:
+              //                         notifire.getpinkscolor.withOpacity(0.4),
+              //                     size: height / 20,
+              //                   ),
+              //                   SizedBox(
+              //                     height: height / 80,
+              //                   ),
+              //                   Container(
+              //                     height: height / 30,
+              //                     width: width / 5,
+              //                     decoration: BoxDecoration(
+              //                         borderRadius: const BorderRadius.all(
+              //                           Radius.circular(20),
+              //                         ),
+              //                         color: notifire.getpinkscolor),
+              //                     child: Row(
+              //                       mainAxisAlignment: MainAxisAlignment.center,
+              //                       children: [
+              //                         const Icon(
+              //                           Icons.add,
+              //                           color: Colors.white,
+              //                         ),
+              //                         Text(
+              //                           "Add",
+              //                           style: TextStyle(
+              //                               color: Colors.white,
+              //                               fontSize: height / 60,
+              //                               fontFamily: 'Gilroy Bold'),
+              //                         ),
+              //                       ],
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             )
+              //           : Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               color: Colors.transparent,
+              //               child: ClipRRect(
+              //                 borderRadius: const BorderRadius.all(
+              //                   Radius.circular(15),
+              //                 ),
+              //                 child: Image.file(
+              //                   File(
+              //                     imageFile4!.path,
+              //                   ),
+              //                   fit: BoxFit.cover,
+              //                 ),
+              //               ),
+              //             ),
+              //     ),
+              //     const Spacer(),
+              //     GestureDetector(
+              //       onTap: () {
+              //         // setState(() {
+              //         //   _openCamera5(context);
+              //         // });
+              //       },
+              //       child: (imageFile5 == null)
+              //           ? Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               decoration: BoxDecoration(
+              //                 color: notifire.getlightingcolor,
+              //                 borderRadius: BorderRadius.circular(15),
+              //               ),
+              //               child: Column(
+              //                 children: [
+              //                   SizedBox(
+              //                     height: height / 100,
+              //                   ),
+              //                   Icon(
+              //                     Icons.camera_alt_outlined,
+              //                     color:
+              //                         notifire.getpinkscolor.withOpacity(0.4),
+              //                     size: height / 20,
+              //                   ),
+              //                   SizedBox(
+              //                     height: height / 80,
+              //                   ),
+              //                   Container(
+              //                     height: height / 30,
+              //                     width: width / 5,
+              //                     decoration: BoxDecoration(
+              //                         borderRadius: const BorderRadius.all(
+              //                           Radius.circular(20),
+              //                         ),
+              //                         color: notifire.getpinkscolor),
+              //                     child: Row(
+              //                       mainAxisAlignment: MainAxisAlignment.center,
+              //                       children: [
+              //                         const Icon(
+              //                           Icons.add,
+              //                           color: Colors.white,
+              //                         ),
+              //                         Text(
+              //                           "Add",
+              //                           style: TextStyle(
+              //                               color: Colors.white,
+              //                               fontSize: height / 60,
+              //                               fontFamily: 'Gilroy Bold'),
+              //                         ),
+              //                       ],
+              //                     ),
+              //                   ),
+              //                 ],
+              //               ),
+              //             )
+              //           : Container(
+              //               height: height / 7.5,
+              //               width: width / 3.5,
+              //               color: Colors.transparent,
+              //               child: ClipRRect(
+              //                 borderRadius: const BorderRadius.all(
+              //                   Radius.circular(15),
+              //                 ),
+              //                 child: Image.file(
+              //                   File(
+              //                     imageFile5!.path,
+              //                   ),
+              //                   fit: BoxFit.cover,
+              //                 ),
+              //               ),
+              //             ),
+              //     ),
+              //   ],
+              // ),
+              SizedBox(
+                height: height / 10,
               ),
-              SizedBox(height: height / 10,),
               Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(30),),
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        notifire.getg4color,notifire.getg3color,notifire.getg2color,notifire.getgcolor
-                      ],
+                child: InkWell(
+                  onTap: () {
+                    if (imageFile == null) {
+                      Utils.flutterToast('Please Upload a Photo');
+                    } else {
+                      var base64Image =
+                          base64Encode(File(imageFile!.path).readAsBytesSync());
+                      // uploadPhotosViewModel
+                      //     .uploadProfilePhotoApi(context, data: {
+                      //   'image': imageFile!.path,
+                      // });
+                      debugPrint(imageFile!.path);
+                      uploadPhotosViewModel.addImage(File(imageFile!.path));
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(30),
+                      ),
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          notifire.getg4color,
+                          notifire.getg3color,
+                          notifire.getg2color,
+                          notifire.getgcolor
+                        ],
+                      ),
                     ),
-                  ),
-                  height: height / 17,
-                  width: width / 1.3,
-                  child: Center(
-                    child: Text(
-                      CustomStrings.next,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: height / 45,
-                          fontFamily: 'Gilroy Bold'),
+                    height: height / 17,
+                    width: width / 1.3,
+                    child: Center(
+                      child: Text(
+                        CustomStrings.next,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: height / 45,
+                            fontFamily: 'Gilroy Bold'),
+                      ),
                     ),
                   ),
                 ),
@@ -684,14 +711,14 @@ class _MediaState extends State<Media> {
     );
   }
 
-  // void _openCamera(BuildContext context) async {
-  //   final pickedFile = await ImagePicker().getImage(
-  //     source: ImageSource.camera,
-  //   );
-  //   setState(() {
-  //     imageFile = pickedFile!;
-  //   });
-  // }
+  void _openCamera(BuildContext context) async {
+    final pickedFile = await ImagePicker().getImage(
+      source: ImageSource.camera,
+    );
+    setState(() {
+      imageFile = pickedFile!;
+    });
+  }
 
   // void _openCamera1(BuildContext context) async {
   //   final pickedFile = await ImagePicker().getImage(

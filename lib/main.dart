@@ -1,5 +1,6 @@
 import 'package:dating/spleshscreen.dart';
 import 'package:dating/view_model/auth_view_model.dart';
+import 'package:dating/view_model/uploads_photos_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => ColorNotifire()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => UploadPhotosViewModel()),
       ],
       child: const MaterialApp(
         home: Spleshscreen(),

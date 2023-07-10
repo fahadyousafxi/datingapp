@@ -8,4 +8,8 @@ class AppUrl {
   static var verifyOTPEndPoint = '$baseUrl/verify-otp';
   static var socialLoginEndPoint = '$baseUrl/login-with-social';
   static var sendOTPByPhoneNumberEndPoint = '$baseUrl/send-otp-by-phone-number';
+
+  static var createProfileEndPoint = '$baseUrl/save-profile';
+
+  static var uploadProfileImageEndPoint = '$baseUrl/uplaod-image';
 }
