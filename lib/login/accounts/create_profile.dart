@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
 import '../../utils/string.dart';
+import '../../view_model/profile_view_model.dart';
 
 class CreateProfile extends StatefulWidget {
   const CreateProfile({Key? key}) : super(key: key);
@@ -501,6 +502,7 @@ class _CreateProfileState extends State<CreateProfile> {
 
   @override
   Widget build(BuildContext context) {
+    final profileViewModel = Provider.of<ProfileViewModel>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       backgroundColor: notifire.getprimerycolor,
@@ -1822,8 +1824,8 @@ class _CreateProfileState extends State<CreateProfile> {
                     child: InkWell(
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          Map data = {
-                            "userId": "6479f965c927ca0bf1e6c118",
+                          Map<String, dynamic> data = {
+                            "userId": "64ac5b756262d798b23c0cce",
                             "gender": seconddropdownvalue,
                             "age": firstdropdownvalue,
                             "about": _aboutMeController.text.toString(),
@@ -1838,17 +1840,18 @@ class _CreateProfileState extends State<CreateProfile> {
                             "healthIssue":
                                 _healthIssuesController.text.toString(),
                             "bornReligious": muslimOrRevertDownValue,
-                            "isDrink":
-                                doYouDrinkDownValue == 'yes' ? true : false,
-                            "isSmoke":
-                                doYouSmokeDownValue == 'yes' ? true : false,
-                            "isMadication": areYouOnMedicationDownValue == 'yes'
-                                ? true
-                                : false,
+                            "isDrink": 'false',
+                            "isSmoke": 'false',
+                            "isMadication": 'false',
                             "ethnicity": ethnicityDownValue,
                             "nationality": nationalityDropdownValue,
-                            "levelOfReligiously": levelOfReligiouslyItems,
+                            "levelOfReligiously":
+                                levelOfReligiouslyDropdownValue,
                           };
+
+                          // debugPrint(data);
+                          profileViewModel.createProfileApi(context,
+                              data: data);
                         }
                       },
                       child: Container(
