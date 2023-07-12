@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
+import '../bottom/bottombar.dart';
 import '../repository/profile_repository.dart';
 import '../utils/utils.dart';
 
@@ -26,6 +27,15 @@ class ProfileViewModel with ChangeNotifier {
       setLoading(false);
       debugPrint('&&&&&&&&&&&&&&' + value.toString() + '&&&&&&&&&&&&&&');
       Utils.flutterToast('Profile created successful');
+      Navigator.pop(context);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const Bottom();
+          },
+        ),
+      );
     }).onError((error, stackTrace) {
       // onError code
       setLoading(false);

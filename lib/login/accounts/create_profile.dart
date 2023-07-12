@@ -1819,13 +1819,24 @@ class _CreateProfileState extends State<CreateProfile> {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: width / 18),
-                child: Center(
-                  child: Material(
-                    child: InkWell(
-                      onTap: () {
+                child: Row(
+                  children: [
+                    const Spacer(),
+                    Text(
+                      CustomStrings.next,
+                      style: TextStyle(
+                          color: notifire.getpinksscolor,
+                          fontSize: height / 40,
+                          fontFamily: 'Gilroy Bold'),
+                    ),
+                    GestureDetector(
+                      onTap: () async {
                         if (_formKey.currentState!.validate()) {
+                          final SharedPreferences sp =
+                              await SharedPreferences.getInstance();
+                          String? userId = sp.getString('userId');
                           Map<String, dynamic> data = {
-                            "userId": "64ac5b756262d798b23c0cce",
+                            "userId": userId.toString(),
                             "gender": seconddropdownvalue,
                             "age": firstdropdownvalue,
                             "about": _aboutMeController.text.toString(),
@@ -1853,42 +1864,115 @@ class _CreateProfileState extends State<CreateProfile> {
                           profileViewModel.createProfileApi(context,
                               data: data);
                         }
+                        // Navigator.pop(context);
+                        // Navigator.pushReplacement(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (context) {
+                        //       return const Bottom();
+                        //     },
+                        //   ),
+                        // );
                       },
                       child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          ),
+                        height: height / 20,
+                        width: width / 7,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
                           gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
                             colors: [
-                              Color(0xffff6a95),
-                              Color(0xffff608e),
-                              Color(0xfffe4d82),
-                              Color(0xffff427b),
+                              notifire.getgcolor,
+                              notifire.getg2color,
+                              notifire.getg3color,
+                              notifire.getg4color
                             ],
                           ),
                         ),
-                        height: height / 17,
-                        width: width,
-                        child: Center(
-                          child: Text(
-                            CustomStrings.savechanges,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: height / 45,
-                                fontFamily: 'Gilroy Bold'),
+                        child: const Center(
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ),
               SizedBox(
-                height: height / 20,
+                height: height / 50,
               ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: width / 18),
+              //   child: Center(
+              //     child: Material(
+              //       child: InkWell(
+              //         onTap: () {
+              //           if (_formKey.currentState!.validate()) {
+              //             Map<String, dynamic> data = {
+              //               "userId": "64ac5b756262d798b23c0cce",
+              //               "gender": seconddropdownvalue,
+              //               "age": firstdropdownvalue,
+              //               "about": _aboutMeController.text.toString(),
+              //               "address": _addressController.text.toString(),
+              //               "maritalStatus": maritalStatusDropdownValue,
+              //               "height": heightDropdownValue,
+              //               "profession": _professionController.text.toString(),
+              //               "lookingFor":
+              //                   _whatAmILookingForController.text.toString(),
+              //               "child": noOfChildrenDropdownValue,
+              //               "sect": sectDropdownValue,
+              //               "healthIssue":
+              //                   _healthIssuesController.text.toString(),
+              //               "bornReligious": muslimOrRevertDownValue,
+              //               "isDrink": 'false',
+              //               "isSmoke": 'false',
+              //               "isMadication": 'false',
+              //               "ethnicity": ethnicityDownValue,
+              //               "nationality": nationalityDropdownValue,
+              //               "levelOfReligiously":
+              //                   levelOfReligiouslyDropdownValue,
+              //             };
+              //
+              //             // debugPrint(data);
+              //             profileViewModel.createProfileApi(context,
+              //                 data: data);
+              //           }
+              //         },
+              //         child: Container(
+              //           decoration: const BoxDecoration(
+              //             borderRadius: BorderRadius.all(
+              //               Radius.circular(30),
+              //             ),
+              //             gradient: LinearGradient(
+              //               begin: Alignment.topCenter,
+              //               end: Alignment.bottomCenter,
+              //               colors: [
+              //                 Color(0xffff6a95),
+              //                 Color(0xffff608e),
+              //                 Color(0xfffe4d82),
+              //                 Color(0xffff427b),
+              //               ],
+              //             ),
+              //           ),
+              //           height: height / 17,
+              //           width: width,
+              //           child: Center(
+              //             child: Text(
+              //               CustomStrings.savechanges,
+              //               style: TextStyle(
+              //                   color: Colors.white,
+              //                   fontSize: height / 45,
+              //                   fontFamily: 'Gilroy Bold'),
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

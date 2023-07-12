@@ -1,4 +1,3 @@
-import 'package:dating/bottom/bottombar.dart';
 import 'package:dating/login/accounts/create_profile.dart';
 import 'package:dating/login/accounts/sms.dart';
 import 'package:dating/login/accounts/smsverify.dart';
@@ -85,47 +84,47 @@ class _AccountState extends State<Account> {
       backgroundColor: notifire.getprimerycolor,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Colors.transparent,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      color: notifire.getprimerycolor,
-                      child: PageView(
-                        // physics: const NeverScrollableScrollPhysics(),
-                        controller:
-                            PageController(initialPage: widget.initialPage!),
-                        onPageChanged: (int page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
-                        children: [
-                          Sms(
-                            password: widget.password,
-                            email: widget.email,
-                            name: widget.name,
-                            birthDay: widget.birthDate,
-                            id: null,
-                          ),
-                          Verify(
-                            id: widget.id,
-                          ),
-                          Interests(),
-                          Media(),
-                          // Idealmatch(),
-                          CreateProfile()
-                        ],
-                      ),
+        child: Container(
+          decoration: const BoxDecoration(
+            color: Colors.transparent,
+          ),
+          child: Stack(
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                color: notifire.getprimerycolor,
+                child: PageView(
+                  // physics: const NeverScrollableScrollPhysics(),
+                  controller: PageController(initialPage: widget.initialPage!),
+                  onPageChanged: (int page) {
+                    setState(() {
+                      _currentPage = page;
+                    });
+                  },
+                  children: [
+                    Sms(
+                      password: widget.password,
+                      email: widget.email,
+                      name: widget.name,
+                      birthDay: widget.birthDate,
+                      id: null,
                     ),
-                  ),
-                  _currentPage != _numPages - 1
+                    Verify(
+                      id: widget.id,
+                    ),
+                    Interests(),
+                    Media(),
+                    // Idealmatch(),
+                    CreateProfile()
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 1,
+                child: Container(
+                  height: 50,
+                  width: width / 1,
+                  child: _currentPage != _numPages - 1
                       ? Column(
                           children: [
                             Padding(
@@ -141,7 +140,9 @@ class _AccountState extends State<Account> {
                                   ),
                                   const Spacer(),
                                   _currentPage == 1 || _currentPage == 0
-                                      ? SizedBox()
+                                      ? SizedBox(
+                                          height: height / 20,
+                                        )
                                       : GestureDetector(
                                           onTap: () {
                                             PageController(
@@ -191,7 +192,7 @@ class _AccountState extends State<Account> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: height / 20),
+                            // SizedBox(height: height / 20),
                           ],
                         )
                       : Column(
@@ -208,59 +209,65 @@ class _AccountState extends State<Account> {
                                     ),
                                   ),
                                   const Spacer(),
-                                  Text(
-                                    CustomStrings.next,
-                                    style: TextStyle(
-                                        color: notifire.getpinksscolor,
-                                        fontSize: height / 40,
-                                        fontFamily: 'Gilroy Bold'),
+                                  Container(
+                                    color: Colors.transparent,
+                                    width: width / 2,
+                                    height: height / 20,
                                   ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                      Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return const Bottom();
-                                          },
-                                        ),
-                                      );
-                                    },
-                                    child: Container(
-                                      height: height / 20,
-                                      width: width / 7,
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topRight,
-                                          end: Alignment.bottomLeft,
-                                          colors: [
-                                            notifire.getgcolor,
-                                            notifire.getg2color,
-                                            notifire.getg3color,
-                                            notifire.getg4color
-                                          ],
-                                        ),
-                                      ),
-                                      child: const Center(
-                                        child: Icon(
-                                          Icons.arrow_forward,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+
+                                  // Text(
+                                  //   CustomStrings.next,
+                                  //   style: TextStyle(
+                                  //       color: notifire.getpinksscolor,
+                                  //       fontSize: height / 40,
+                                  //       fontFamily: 'Gilroy Bold'),
+                                  // ),
+                                  // GestureDetector(
+                                  //   onTap: () {
+                                  //     Navigator.pop(context);
+                                  //     Navigator.pushReplacement(
+                                  //       context,
+                                  //       MaterialPageRoute(
+                                  //         builder: (context) {
+                                  //           return const Bottom();
+                                  //         },
+                                  //       ),
+                                  //     );
+                                  //   },
+                                  //   child: Container(
+                                  //     height: height / 20,
+                                  //     width: width / 7,
+                                  //     decoration: BoxDecoration(
+                                  //       shape: BoxShape.circle,
+                                  //       gradient: LinearGradient(
+                                  //         begin: Alignment.topRight,
+                                  //         end: Alignment.bottomLeft,
+                                  //         colors: [
+                                  //           notifire.getgcolor,
+                                  //           notifire.getg2color,
+                                  //           notifire.getg3color,
+                                  //           notifire.getg4color
+                                  //         ],
+                                  //       ),
+                                  //     ),
+                                  //     child: const Center(
+                                  //       child: Icon(
+                                  //         Icons.arrow_forward,
+                                  //         color: Colors.white,
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
-                            SizedBox(height: height / 20),
+                            // SizedBox(height: height / 20),
                           ],
                         ),
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

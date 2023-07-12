@@ -260,6 +260,7 @@ class _MeetingState extends State<Meeting> {
                       birthDate: '',
                       password: '',
                       initialPage: 0,
+                      id: '',
                     ),
                   ),
                 );

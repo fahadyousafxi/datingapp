@@ -1,5 +1,6 @@
 import 'package:dating/bottom/bottombar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../login/accounts/account.dart';
 import '../login/accounts/sms.dart';
@@ -23,12 +24,14 @@ class AuthViewModel with ChangeNotifier {
   /// For Login Api Call
   Future<void> loginApi(BuildContext context, {required dynamic data}) async {
     setLoading(true);
-    _myRepo.loginApi(data).then((value) {
+    _myRepo.loginApi(data).then((value) async {
       // code
       setLoading(false);
       debugPrint('&&&&&&&&&&&&&&' + value.toString() + '&&&&&&&&&&&&&&');
       // Utils.flutterToast(value['token'].toString());
       Utils.flutterToast('Sign in successful');
+      final SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('userId', value['id']);
       // userViewModel.saveUser(value['token'].toString());
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Bottom()));
@@ -51,10 +54,12 @@ class AuthViewModel with ChangeNotifier {
   Future<void> registerApi(BuildContext context,
       {required dynamic data}) async {
     setLoading(true);
-    _myRepo.registerApi(data).then((value) {
+    _myRepo.registerApi(data).then((value) async {
       // code
       setLoading(false);
       debugPrint(value.toString());
+      final SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('userId', value['id']);
       debugPrint(value['id'].toString());
       // Utils.flutterToast('Please verify it now');
       sendOTPApi(context,
@@ -147,9 +152,11 @@ class AuthViewModel with ChangeNotifier {
   Future<void> loginWithGoogle(BuildContext context,
       {required dynamic data}) async {
     setLoading(true);
-    _myRepo.socialLoginApi(data).then((value) {
+    _myRepo.socialLoginApi(data).then((value) async {
       // code
 
+      final SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('userId', value['user']['_id'].toString());
       setLoading(false);
 
       debugPrint(value.toString());
