@@ -6,12 +6,14 @@ class Customtextfild2 {
   static Widget textField(
       TextEditingController controller, name1, textcolor, se, clr,
       {String? Function(String?)? validator,
-      TextInputType keyboardType = TextInputType.text}) {
+      TextInputType keyboardType = TextInputType.text,
+      bool obscurePassword = false}) {
     return Container(
       color: Colors.transparent,
       height: height / 16,
       width: width,
       child: TextFormField(
+        obscureText: obscurePassword,
         keyboardType: keyboardType,
         validator: validator,
         controller: controller,

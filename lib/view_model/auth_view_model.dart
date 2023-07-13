@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dating/bottom/bottombar.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,13 +30,15 @@ class AuthViewModel with ChangeNotifier {
       // code
       setLoading(false);
       debugPrint('&&&&&&&&&&&&&&' + value.toString() + '&&&&&&&&&&&&&&');
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Bottom()));
       // Utils.flutterToast(value['token'].toString());
       Utils.flutterToast('Sign in successful');
       final SharedPreferences sp = await SharedPreferences.getInstance();
-      sp.setString('userId', value['id']);
+      log('*****************:');
+      log('*****************: ${value['user']['_id'].toString()}');
+      sp.setString('userId', value['user']['_id'].toString());
       // userViewModel.saveUser(value['token'].toString());
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Bottom()));
     }).onError((error, stackTrace) {
       // onError code
       setLoading(false);

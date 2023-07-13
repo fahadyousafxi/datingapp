@@ -160,6 +160,7 @@ class _SignInWithPhoneState extends State<SignInWithPhone> {
                 notifire.getdarkscolor,
                 Image.asset("image/password.png"),
                 notifire.getlightingcolor,
+                obscurePassword: true,
               ),
             ),
             SizedBox(

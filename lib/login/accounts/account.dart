@@ -121,7 +121,8 @@ class _AccountState extends State<Account> {
               ),
               Positioned(
                 bottom: 1,
-                child: Container(
+                left: 1,
+                child: SizedBox(
                   height: 50,
                   width: width / 1,
                   child: _currentPage != _numPages - 1
@@ -209,8 +210,8 @@ class _AccountState extends State<Account> {
                                     ),
                                   ),
                                   const Spacer(),
-                                  Container(
-                                    color: Colors.transparent,
+                                  SizedBox(
+                                    // color: Colors.transparent,
                                     width: width / 2,
                                     height: height / 20,
                                   ),

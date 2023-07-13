@@ -159,6 +159,7 @@ class _SignInWithEmailState extends State<SignInWithEmail> {
                 notifire.getdarkscolor,
                 Image.asset("image/password.png"),
                 notifire.getlightingcolor,
+                obscurePassword: true,
               ),
             ),
             SizedBox(
